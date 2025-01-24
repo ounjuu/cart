@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="cart1.css" />
+    <style></style>
+  </head>
+  <body>
+    <!-- 헤더 만들기 -->
+
+    <!-- 등록 부분 -->
+    <div class="input-wrap">
+      <!-- 아이디 숫자로만 / 중복 불가 -->
+      <input
+        type="number"
+        placeholder="아이디를 입력해 주세요."
+        id="idInput"
+        oninput="allonchange(1)"
+      /><br />
+      <div class="idbox"></div>
+      <!-- 상품명 -->
+      <input
+        placeholder="상품명을 입력해 주세요."
+        id="nameInput"
+        oninput="allonchange(2)"
+      /><br />
+      <div class="namebox"></div>
+      <!-- 가격 숫자 -->
+      <input
+        type="number"
+        placeholder="가격을 입력해 주세요."
+        id="ageInput"
+        oninput="allonchange(3)"
+      /><br />
+      <div class="agebox"></div>
+      <!-- 상세내용 -->
+      <input
+        placeholder="경력을 입력해 주세요."
+        id="yearInput"
+        oninput="allonchange(4)"
+      /><br />
+      <div class="yearbox"></div>
+      <button id="savebtn" class="svbtn" onclick="save()" disabled="true">
+        저장
+      </button>
+      <!-- 테이블 여기에 저장~ -->
+      <div class="main-wrap"></div>
+    </div>
+    <script src="./cart.js"></script>
+  </body>
+</html>
