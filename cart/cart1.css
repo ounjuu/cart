@@ -147,3 +147,79 @@ button.fixbtn:hover {
 button.deletebtn:hover {
   background-color: #c82333; /* 삭제 버튼에 마우스를 올렸을 때 더 진한 빨간색 */
 }
+
+/* 푸터 css */
+
+.my_footer {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  background-color: #333;
+  color: white;
+}
+
+.footertext {
+  /* 한글 폰트 13size */
+  font-weight: normal;
+  font-style: normal;
+  font-size: 11px;
+  padding: 5px;
+  width: 95%;
+  height: 90%;
+}
+
+.footerpadding {
+  height: 50px;
+  width: 100%;
+}
+
+.footertop {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-items: flex-end;
+  justify-content: space-between;
+}
+
+.footerbottom {
+  height: 30%;
+  width: 100%;
+  border-top: white solid 1px;
+  display: flex;
+  align-items: center;
+}
+
+.left_margin {
+  margin-left: 20px;
+}
+
+.footertop_left {
+  padding-left: 20px;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.footertop_left a {
+  color: inherit;
+}
+
+.footertop_right {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding-bottom: 10px;
+}
+.bottomlogo_style {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 2px;
+}
+/* 푸터 css 끝 */
