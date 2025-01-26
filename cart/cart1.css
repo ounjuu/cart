@@ -7,9 +7,8 @@
 
 /* Body styles */
 body {
-  font-family: Arial, sans-serif;
+  padding-top: 80px;
   background-color: #f4f4f4; /* 밝은 회색 배경 */
-  padding: 20px;
 }
 
 /* Input wrapper */
@@ -20,6 +19,7 @@ body {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+  margin-top: 20px;
 }
 
 /* Input fields */
@@ -76,78 +76,6 @@ div.yearbox {
   overflow-x: auto;
 }
 
-/* Table styles */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-thead {
-  background-color: #333; /* 검정색 배경 */
-  color: white;
-}
-
-th {
-  padding: 12px;
-  text-align: left;
-  border: 1px solid #ddd; /* 연한 회색 테두리 */
-  white-space: nowrap; /* 줄바꿈 방지 */
-}
-
-td {
-  padding: 12px;
-  text-align: left;
-  border: 1px solid #ddd;
-}
-
-/* Style for management buttons */
-td button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100px; /* 버튼 고정 크기 */
-  font-size: 12px;
-}
-
-/* Style for the buttons container */
-.buttons {
-  display: flex; /* Flexbox를 사용하여 가로로 배치 */
-  justify-content: space-between; /* 왼쪽, 오른쪽 배치 */
-  gap: 10px; /* 버튼 간의 간격 */
-  width: 100%; /* 버튼이 테이블 셀 안에서 전부 가로로 배치되도록 */
-}
-
-/* Button styles */
-button.fixbtn,
-button.deletebtn {
-  color: white;
-  font-size: 14px;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 48%; /* 각 버튼의 너비를 동일하게 설정 */
-}
-
-button.fixbtn {
-  background-color: #333; /* 수정 버튼은 검정색 */
-}
-
-button.deletebtn {
-  background-color: #e13f7d; /* 삭제 버튼은 빨간색 */
-}
-
-/* Button hover effect */
-button.fixbtn:hover {
-  background-color: #555; /* 수정 버튼에 마우스를 올렸을 때 짙은 회색 */
-}
-
-button.deletebtn:hover {
-  background-color: #c82333; /* 삭제 버튼에 마우스를 올렸을 때 더 진한 빨간색 */
-}
-
 /* 푸터 css */
 
 .my_footer {
@@ -158,6 +86,7 @@ button.deletebtn:hover {
   justify-content: center;
   padding-top: 20px;
   background-color: #333;
+  /* background-color: #b0d0f0; */
   color: white;
 }
 
@@ -223,3 +152,130 @@ button.deletebtn:hover {
   padding-bottom: 2px;
 }
 /* 푸터 css 끝 */
+
+/* 이미지 css */
+td img {
+  width: 100px;
+  height: 100px;
+}
+.logoSize {
+  width: 35px;
+  height: 35px;
+  margin-left: 8px;
+}
+
+/* 가운데 테이블 css */
+
+/* 테이블 스타일 */
+table {
+  width: 80%; /* 테이블 너비를 줄여서 가운데 정렬 */
+  margin: 20px auto; /* 상하 마진과 가운데 정렬 */
+  font-size: 18px;
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  background-color: #ffffff;
+  color: #333333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 */
+  border: none;
+}
+
+/* 테이블 헤더 스타일 */
+thead {
+  background-color: #363636;
+  color: #ffffff;
+  white-space: nowrap; /* 줄바꿈 방지 */
+  text-align: center; /* 중앙 정렬 */
+}
+
+th {
+  padding: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 1px solid #444444;
+}
+
+/* 테이블 데이터 셀 스타일 */
+tbody tr:nth-child(odd) {
+  background-color: #f9f9f9; /* 밝은 회색 */
+}
+
+tbody tr:nth-child(even) {
+  background-color: #eeeeee; /* 조금 더 어두운 회색 */
+}
+
+td {
+  padding: 12px;
+  border: 1px solid #dddddd;
+}
+
+/* 버튼 스타일 */
+.buttons button {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.buttons button:hover {
+  background-color: #444444;
+}
+
+/* 테이블 전체 감싸는 영역 */
+.main-wrap {
+  margin: 0 auto;
+  max-width: 1280px;
+  overflow-x: auto;
+}
+
+/* 헤더 css 시작 */
+.shopHeader {
+  width: 100%;
+  height: 80px;
+  max-width: 1280px;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.headerWrap {
+  width: 100%;
+  height: 100%;
+  /* background-color: #d7dee5; */
+  background-color: #ffffff;
+}
+
+.divsWrap_hd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 100%;
+}
+
+.headrightWarp {
+  display: flex;
+  width: 10%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.logoname {
+  width: 220px;
+  height: 100%;
+  padding-bottom: 20px;
+}
+
+.bottomlogoname {
+  width: 350px;
+  height: 60px;
+  margin-bottom: 10px;
+}

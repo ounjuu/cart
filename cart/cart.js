@@ -18,6 +18,18 @@ tableWrap.innerHTML = `
                   `;
 
 let data = [];
+// 이미지 랜덤
+const randomImg = [
+  "0.webp",
+  "1.webp",
+  "2.webp",
+  "3.webp",
+  "4.webp",
+  "5.webp",
+  "6.webp",
+  "7.webp",
+];
+
 window.onload = function () {
   const getDate = JSON.parse(localStorage.getItem("userInfo"));
   if (getDate) {
@@ -30,7 +42,7 @@ window.onload = function () {
     return `
               <tr id="tr${x.id}">
               <td class="img${x.id}">
-                  <div>이미지</div>
+                  <div class="imgWrap${x.id}"><img src="${x.image}" alt="randomimg" /></div>
                   <span></span>
                   </td>
                 <td class="names${x.id}">
@@ -46,7 +58,7 @@ window.onload = function () {
                   <span></span>
                 </td>
                 <td class="buttons">
-                  <button class="fixbtn${x.id}" onclick="updateData(${x.id})">
+                  <button class="fixbtn${x.id}" onclick="updateData(${x.id})" data-label="수정">
                     수정
                   </button>
                   <button class="deletebtn${x.id}" onclick="deleteData(${x.id})">
@@ -56,6 +68,7 @@ window.onload = function () {
               </tr>
               `;
   });
+
   const tablebody = document.querySelector(".tablebody");
   tablebody.innerHTML = dataAll.join("");
 
@@ -170,6 +183,13 @@ function allonchange(index) {
     savebtn.disabled = true;
   }
 }
+
+// 랜덤 이미지 만들기
+function getRandomImage() {
+  const choiceImg = randomImg[Math.floor(Math.random() * randomImg.length)];
+  const makeImg = document.createElement("img");
+  return (makeImg.src = `img/${choiceImg}`);
+}
 // 저장 버튼 누르면 데이터 저장
 function save() {
   // 1번 검사
@@ -188,12 +208,15 @@ function save() {
     const nameInput = document.querySelector("#nameInput").value;
     const ageInput = document.querySelector("#ageInput").value;
     const yearInput = document.querySelector("#yearInput").value;
+    const randomImage = getRandomImage();
 
+    // 인풋값 가져오기
     let userInfo1 = {
       id: idInput,
       name: nameInput,
       age: ageInput,
       year: yearInput,
+      image: randomImage,
     };
 
     data.push(userInfo1);
@@ -204,7 +227,8 @@ function save() {
       return `
              <tr id="tr${x.id}">
              <td class="img${x.id}">
-                  <div>이미지</div>
+                  <div class="imgWrap${x.id}">
+                   <img src="${x.image}" alt="randomimg" /></div>
                   <span></span>
                   </td>
                 <td class="names${x.id}">
@@ -220,7 +244,7 @@ function save() {
                   <span></span>
                 </td>
                 <td class="buttons">
-                  <button class="fixbtn${x.id}" onclick="updateData(${x.id})">
+                  <button class="fixbtn${x.id}" onclick="updateData(${x.id})" data-label="수정">
                     수정
                   </button>
                   <button class="deletebtn${x.id}" onclick="deleteData(${x.id})">
