@@ -5,7 +5,7 @@ tableWrap.innerHTML = `
                     <thead>
                       <tr>
                       <th>상품이미지</th>
-                        <th>상품이름</th>
+                        <th>상품명</th>
                         <th>가격</th>
                         <th>상세내용</th>
                         <th>관리</th>
@@ -41,19 +41,19 @@ window.onload = function () {
   const dataAll = data.map((x, i) => {
     return `
               <tr id="tr${x.id}">
-              <td class="img${x.id}">
+              <td class="img${x.id} tdsize1">
                   <div class="imgWrap${x.id}"><img src="${x.image}" alt="randomimg" /></div>
                   <span></span>
                   </td>
-                <td class="names${x.id}">
+                <td class="names${x.id} tdsize1">
                   <div>${x.name}</div>
                   <span></span>
                   </td>
-                <td class="age${x.id}">
+                <td class="age${x.id} tdsize2">
                   <div>${x.age}</div>
                   <span></span>
                   </td>
-                <td class="years${x.id}">
+                <td class="years${x.id} tdsize3">
                   <div>${x.year}</div>
                   <span></span>
                 </td>
@@ -226,20 +226,20 @@ function save() {
     const dataAll = data.map((x, i) => {
       return `
              <tr id="tr${x.id}">
-             <td class="img${x.id}">
+             <td class="img${x.id} tdsize1">
                   <div class="imgWrap${x.id}">
                    <img src="${x.image}" alt="randomimg" /></div>
                   <span></span>
                   </td>
-                <td class="names${x.id}">
+                <td class="names${x.id} tdsize1">
                   <div>${x.name}</div>
                   <span></span>
                   </td>
-                <td class="age${x.id}">
+                <td class="age${x.id} tdsize2">
                   <div>${x.age}</div>
                   <span></span>
                   </td>
-                <td class="years${x.id}">
+                <td class="years${x.id} tdsize3">
                   <div>${x.year}</div>
                   <span></span>
                 </td>

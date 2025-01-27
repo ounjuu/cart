@@ -10,7 +10,11 @@
       href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=Noto+Sans+KR:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="cart1.css" />
+    <link rel="stylesheet" href="./main.css" />
+    <script
+      src="https://kit.fontawesome.com/ed5ea03c90.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <!-- 헤더 만들기 -->
@@ -37,49 +41,8 @@
       </div>
     </div>
 
-    <!-- 등록 부분 -->
-    <div class="input-wrap">
-      <!-- 아이디 숫자로만 / 중복 불가 -->
-      <input
-        type="number"
-        placeholder="아이디를 입력해 주세요."
-        id="idInput"
-        oninput="allonchange(1)"
-      /><br />
-      <div class="idbox"></div>
-      <!-- 상품명 -->
-      <input
-        placeholder="상품명을 입력해 주세요."
-        id="nameInput"
-        oninput="allonchange(2)"
-      /><br />
-      <div class="namebox"></div>
-      <!-- 가격 숫자 -->
-      <input
-        type="number"
-        placeholder="가격을 입력해 주세요."
-        id="ageInput"
-        oninput="allonchange(3)"
-      /><br />
-      <div class="agebox"></div>
-      <!-- 상세내용 -->
-      <input
-        placeholder="상세내용을 입력해 주세요."
-        id="yearInput"
-        oninput="allonchange(4)"
-      /><br />
-      <div class="yearbox"></div>
-      <button
-        id="savebtn"
-        class="svbtn bottomfont"
-        onclick="save()"
-        disabled="true"
-      >
-        저장
-      </button>
-      <!-- 테이블 여기에 저장~ -->
-      <div class="main-wrap bottomfont"></div>
-    </div>
+    <!-- 상품들 -->
+    <div class="productsBox"><div class="products_wrap"></div></div>
     <!-- 푸터 -->
     <div class="footer_wrap">
       <div class="footerpadding"></div>
@@ -147,6 +110,6 @@
       </div>
     </div>
 
-    <script src="./cart.js"></script>
+    <script src="./main.js"></script>
   </body>
 </html>

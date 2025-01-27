@@ -11,71 +11,6 @@ body {
   background-color: #f4f4f4; /* 밝은 회색 배경 */
 }
 
-/* Input wrapper */
-.input-wrap {
-  max-width: 1000px;
-  margin: 0 auto;
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
-  margin-top: 20px;
-}
-
-/* Input fields */
-input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc; /* 연한 회색 테두리 */
-  border-radius: 4px;
-  font-size: 15px;
-  background-color: white;
-}
-
-input:focus {
-  border-color: #333; /* 포커스 시 짙은 회색 */
-  outline: none;
-}
-
-/* Error messages */
-div.idbox,
-div.namebox,
-div.agebox,
-div.yearbox {
-  color: #e13f7d; /* 오류 메시지 빨간색 */
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-/* Save button */
-#savebtn {
-  padding: 12px 20px;
-  background-color: #333; /* 검정색 배경 */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
-  font-weight: bolder;
-  cursor: pointer;
-  width: 100%; /* 버튼을 전체 너비로 */
-}
-
-#savebtn:disabled {
-  background-color: #ccc; /* 비활성화 시 회색 */
-  cursor: not-allowed;
-}
-
-#savebtn:hover:enabled {
-  background-color: #555; /* 버튼에 마우스를 올렸을 때 짙은 회색 */
-}
-
-/* Table container */
-.main-wrap {
-  margin-top: 40px;
-  overflow-x: auto;
-}
-
 /* 푸터 css */
 
 .my_footer {
@@ -88,6 +23,7 @@ div.yearbox {
   background-color: #333;
   /* background-color: #b0d0f0; */
   color: white;
+  max-width: 1280px;
 }
 
 .footertext {
@@ -166,88 +102,11 @@ div.yearbox {
 /* 푸터 css 끝 */
 
 /* 이미지 css */
-td img {
-  width: 100px;
-  height: 100px;
-}
+
 .logoSize {
   width: 30px;
   height: 30px;
   margin-left: 8px;
-}
-
-/* 가운데 테이블 css */
-
-/* 테이블 스타일 */
-table {
-  width: 80%; /* 테이블 너비를 줄여서 가운데 정렬 */
-  margin: 20px auto; /* 상하 마진과 가운데 정렬 */
-  font-size: 15px;
-  text-align: center;
-  background-color: #ffffff;
-  color: #333333;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 */
-  border: none;
-}
-
-/* 테이블 헤더 스타일 */
-thead {
-  background-color: #363636;
-  color: #ffffff;
-  white-space: nowrap; /* 줄바꿈 방지 */
-  text-align: center; /* 중앙 정렬 */
-}
-
-th {
-  padding: 15px;
-
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-/* 테이블 데이터 셀 스타일 */
-tbody tr:nth-child(odd) {
-  background-color: #f9f9f9; /* 밝은 회색 */
-}
-
-tbody tr:nth-child(even) {
-  background-color: #eeeeee; /* 조금 더 어두운 회색 */
-}
-
-td {
-  padding: 12px;
-  border: 1px solid #dddddd;
-}
-
-/* 버튼 스타일 */
-.buttons button {
-  background-color: #7e7f81;
-  color: #ffffff;
-  border: none;
-  padding: 8px 12px;
-  width: 100%;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 11px;
-  transition: all 0.3s ease;
-  display: block;
-
-  margin-bottom: 5px;
-}
-
-.buttons button:hover {
-  background-color: #444444;
-}
-
-.buttons {
-  width: 120px;
-}
-
-/* 테이블 전체 감싸는 영역 */
-.main-wrap {
-  margin: 0 auto;
-  max-width: 1280px;
-  overflow-x: auto;
 }
 
 /* 헤더 css 시작 */
@@ -328,13 +187,12 @@ td {
 
   /* 푸터 */
   .my_footer {
-    height: auto; /* 자동 높이 */
     padding: 20px 15px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: 15px;
+    position: fixed;
+    bottom: 0;
   }
 
   .footertop {
@@ -430,38 +288,97 @@ td {
     height: 80%;
     padding-top: 10px;
   }
+
+  .my_footer {
+    position: fixed;
+    bottom: 0;
+    height: 300px;
+  }
 }
 
 @media (max-width: 480px) {
-  /* table 상단 사이즈 */
-
   .footertop_right {
     justify-content: center;
     gap: 12px; /* 작은 화면에서 적당한 간격 */
   }
-  /* table 상단 사이즈 */
-  .tdsize1 {
-    width: 30px;
-  }
-
-  .tdsize2 {
-    width: 40px;
-  }
-
-  .tdsize3 {
-    width: 80px;
-  }
 }
 
-/* table 상단 사이즈 */
-.tdsize1 {
-  width: 130px;
+/* 메인 css */
+
+.productsBox {
+  min-height: 1280px;
+  max-width: 1280px;
 }
 
-.tdsize2 {
-  width: 150px;
-}
-
-.tdsize3 {
+/* 비어있습니다. 이미지 사이즈 */
+.empty {
   width: 300px;
+  height: 300px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.emptyWrap {
+  padding-top: 100px;
+}
+
+@media (max-width: 768px) {
+  .empty {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .emptyWrap {
+    padding-top: 0px;
+  }
+
+  .productsBox {
+    min-height: 500px;
+    height: auto;
+    max-width: 1280px;
+  }
+}
+
+/* 이미지 큰 박스 크기 */
+.productsBox {
+  width: 100%;
+  /* display: grid;
+  grid-template-columns: repeat(5, 1fr); */
+  gap: 10px;
+  place-items: center;
+}
+.products_wrap {
+  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.dataimage {
+  img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+}
+.divinWrap {
+  margin: 10px;
+  padding: 10px;
+  height: 100%;
+  position: relative;
+}
+
+.textbox {
+  display: flex;
+  padding: 10px;
+  font-size: 13px;
+}
+
+.dataheart {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
 }
