@@ -1,5 +1,5 @@
-const data = [];
-
+let data = [];
+let cartData = [];
 window.onload = function () {
   const getDate = JSON.parse(localStorage.getItem("userInfo"));
   if (getDate) {
@@ -7,28 +7,43 @@ window.onload = function () {
   } else if (!getDate) {
   }
 
+  const getDate2 = JSON.parse(localStorage.getItem("userCart"));
+  if (getDate2) {
+    cartData.push(...getDate2);
+  } else if (!getDate2) {
+  }
   // URL 파라미터에서 id 추출
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get("id");
 
   // 상품 데이터 가져오기
   const product = data.find((item) => item.id == productId);
-  console.log(product);
+
   function makeBox() {
     return `<div class="detailWrap">
             <div class="detailboxWrap">
-              <div class="imgWrap"><img src="${product.image}" alt="" /></div>
+              <div class="imgWrap"><img src="${product.image}" alt="productimage" /></div>
               <div class="productName">상품명: ${product.name}</div>
               <div class="productPrice">가격: ${product.age}</div>
               <div class="productdetail">상세내용: ${product.year}</div>
-              <div class="buttonWrap"><button>장바구니 담기</button></div>
+              <div class="buttonWrap"><button onclick="cartin(${product.id})">장바구니 담기</button></div>
             </div>
           </div>`;
   }
-  console.log(makeBox);
   const product_wrap = document.querySelector(".product_wrap"); //html에 넣을 곳
   product_wrap.innerHTML = makeBox();
 };
+
+const cartin = (x) => {
+  const cartProduct = data.find((item) => Number(item.id) == x);
+
+  cartData.push(cartProduct);
+
+  localStorage.setItem("userCart", JSON.stringify(cartData));
+  window.location.href = "cart.html";
+};
+
+console.log(cartData);
 
 /////시험중
 // const params = new URLSearchParams(window.location.search);

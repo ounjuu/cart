@@ -4,16 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/ed5ea03c90.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <!-- 이미지 만들 박스 예시 -->
     <div class="detailWrap">
       <div class="detailboxWrap">
-        <div class="imgWrap"><img src="./image/empty.png" alt="" /></div>
-        <div class="productName">상품명:</div>
-        <div class="productPrice">가격:</div>
-        <div class="productdetail">상세내용:</div>
-        <div class="buttonWrap"><button>장바구니 담기</button></div>
+        <div class="imgWrap"><img src="${product.image}" alt="" /></div>
+        <div class="productName">상품명: ${product.name}</div>
+        <div class="productPrice">가격: ${product.age}</div>
+        <div class="productdetail">상세내용: ${product.year}</div>
+        <div class="buttonWrap">
+          <div onclick="deleteCart()">
+            <i class="fa-solid fa-trash-can"></i>
+          </div>
+        </div>
       </div>
     </div>
   </body>

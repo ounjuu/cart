@@ -1,364 +1,53 @@
-// 테이블 생성
-const tableWrap = document.querySelector(".main-wrap");
-tableWrap.innerHTML = `
-                  <table>
-                    <thead>
-                      <tr>
-                      <th>상품이미지</th>
-                        <th>상품명</th>
-                        <th>가격</th>
-                        <th>상세내용</th>
-                        <th>관리</th>
-                      </tr>
-                    </thead>
-                    <tbody class="tablebody">
-                    </tbody>
-                  </table>
-                  <div class="textbox1"></div>
-                  `;
-
-let data = [];
-// 이미지 랜덤
-const randomImg = [
-  "0.webp",
-  "1.webp",
-  "2.webp",
-  "3.webp",
-  "4.webp",
-  "5.webp",
-  "6.webp",
-  "7.webp",
-  "8.webp",
-  "9.webp",
-  "10.webp",
-  "11.webp",
-  "12.webp",
-  "13.webp",
-  "14.webp",
-  "15.webp",
-  "16.webp",
-  "17.webp",
-  "18.webp",
-];
+let cartData = [];
 
 window.onload = function () {
-  const getDate = JSON.parse(localStorage.getItem("userInfo"));
+  const cart_wrap2 = document.querySelector(".cart_wrap2"); //html에 넣을 곳
+  const cartbtn_wrap = document.querySelector(".cartbtn_wrap"); // 버튼
+  const getDate = JSON.parse(localStorage.getItem("userCart"));
+
   if (getDate) {
-    data.push(...getDate);
-  } else if (!getDate) {
+    cartData.push(...getDate);
+    cartbtn_wrap.style.display = "block";
+  } else {
+    console.log("dddd");
+    cart_wrap2.innerHTML = `<div class="emptyWrap"><img src="./image/emptyalert.png" class="empty"/>
+    </div>`; //데이터 없는 경우 텅 띄우기
+    cartbtn_wrap.style.display = "none";
   }
 
-  // 데이터 원래꺼 없으면 로컬 스토리지 내용 테이블에 넣기
-  const dataAll = data.map((x, i) => {
-    return `
-              <tr id="tr${x.id}">
-              <td class="img${x.id} tdsize1">
-                  <div class="imgWrap${x.id}"><img src="${x.image}" alt="randomimg" /></div>
-                  <span></span>
-                  </td>
-                <td class="names${x.id} tdsize1">
-                  <div>${x.name}</div>
-                  <span></span>
-                  </td>
-                <td class="age${x.id} tdsize2">
-                  <div>${x.age}</div>
-                  <span></span>
-                  </td>
-                <td class="years${x.id} tdsize3">
-                  <div>${x.year}</div>
-                  <span></span>
-                </td>
-                <td class="buttons">
-                  <button class="fixbtn${x.id}" onclick="updateData(${x.id})" data-label="수정">
-                    수정
-                  </button>
-                  <button class="deletebtn${x.id}" onclick="deleteData(${x.id})">
-                    삭제
-                  </button>
-                </td>
-              </tr>
-              `;
+  const makeBox = cartData.map((x) => {
+    return `<div class="cart_divs detailWrap${x.id}">
+            <div class="detailboxWrap">
+              <div class="imgWrap"><img src="${x.image}" alt="productimage" /></div>
+              <div class="productName">상품명: ${x.name}</div>
+              <div class="productPrice">가격: ${x.age}</div>
+              <div class="productdetail">상세내용: ${x.year}</div>
+              <div class="buttonWrap"><button onclick="cartin()"><i class="fa-solid fa-trash-can"></i></button></div>
+            </div>
+          </div>`;
   });
 
-  const tablebody = document.querySelector(".tablebody");
-  tablebody.innerHTML = dataAll.join("");
+  cart_wrap.innerHTML = makeBox.join("");
 
-  document.querySelector(".idbox").innerText = "";
-  document.querySelector(".namebox").innerText = "";
-  document.querySelector(".agebox").innerText = "";
-  document.querySelector(".yearbox").innerText = "";
-
-  let savebtn = document.querySelector("#savebtn");
-  savebtn.disabled = true;
+  //장바구니 비우기 전체 버튼
+  cartbtn_wrap.innerHTML = `<button onclick="cartout(${cartData.id})">장바구니 비우기</button>`;
 };
 
-// 실시간 체크 선언
-let idCheck2 = false;
-let nameCheck2 = false;
-let ageCheck2 = false;
-let yearCheck2 = false;
-
-// 실시간 아이디 중복 불가능
-function idonInput() {
-  let regex = /^[0-9]*$/;
-  let iddataup = document.querySelector("#idInput").value;
-  const idplus2 = data.filter((item) => item.id === iddataup);
-  if (idplus2.length > 0) {
-    document.querySelector(".idbox").innerText =
-      "중복입니다. 다른 숫자를 입력하세요.";
-    idCheck2 = false;
-  } else if (!regex) {
-    document.querySelector(".idbox").innerText = "숫자를 입력하세요.";
-    idCheck2 = false;
-  } else {
-    document.querySelector(".idbox").innerText = "";
-    idCheck2 = true;
-  }
-}
-
-// function idonChange() {
-//   let iddataup = document.querySelector("#idInput").value;
-//   const idplus2 = data.filter((item) => item.id === iddataup);
-//   if (idplus2.length > 0) {
-//     document.querySelector(".idbox").innerText =
-//       "중복입니다. 다른 숫자를 입력하세요.";
-//   } else {
-//     document.querySelector(".idbox").innerText = "";
-//     idCheck2 = true;
-//   }
-// }
-
-// 실시간 이름&숫자금지 / 1글자 이상
-function nameonInput() {
-  const regex2 = /^[ㄱ-ㅎ가-힣a-zA-Z]+$/;
-  let namedataup = document.querySelector("#nameInput").value;
-  if (namedataup.length < 1) {
-    document.querySelector(".namebox").innerText = "상품명을 입력하세요.";
-    nameCheck2 = false;
-  } else if (!regex2.test(namedataup)) {
-    document.querySelector(".namebox").innerText =
-      "영문이나 한글을 입력하세요.";
-    nameCheck2 = false;
-  } else {
-    document.querySelector(".namebox").innerText = "";
-    nameCheck2 = true;
-  }
-}
-
-// 실시간 가격 안적으면 X
-function ageonInput() {
-  let agedataup = document.querySelector("#ageInput").value;
-  if (agedataup.length < 1) {
-    document.querySelector(".agebox").innerText = "가격을 입력하세요.";
-    ageCheck2 = false;
-  } else {
-    document.querySelector(".agebox").innerText = "";
-    ageCheck2 = true;
-  }
-}
-
-// 실시간 경력 15자 이상 입력해야 함
-function yearonInput() {
-  let agedataup = document.querySelector("#yearInput").value;
-  if (agedataup.length < 15) {
-    document.querySelector(".yearbox").innerText = "최소 15자 이상 입력하세요.";
-    yearCheck2 = false;
-  } else {
-    document.querySelector(".yearbox").innerText = "";
-    yearCheck2 = true;
-  }
-}
-
-// 저장 버튼 비활성화
-// 조건 만족하면 저장 버튼 활성화
-function allonchange(index) {
-  if (index == 1) {
-    idonInput();
-  } else if (index == 2) {
-    nameonInput();
-  } else if (index == 3) {
-    ageonInput();
-  } else if (index == 4) {
-    yearonInput();
-  }
-  let savebtn = document.querySelector("#savebtn");
-
-  if (
-    idCheck2 === true &&
-    nameCheck2 === true &&
-    yearCheck2 === true &&
-    ageCheck2 === true
-  ) {
-    savebtn.disabled = false;
-  } else {
-    savebtn.disabled = true;
-  }
-}
-
-// 랜덤 이미지 만들기
-function getRandomImage() {
-  const choiceImg = randomImg[Math.floor(Math.random() * randomImg.length)];
-  const makeImg = document.createElement("img");
-  return (makeImg.src = `img/${choiceImg}`);
-}
-// 저장 버튼 누르면 데이터 저장
-function save() {
-  // 1번 검사
-  idonInput();
-  nameonInput();
-  ageonInput();
-  yearonInput();
-
-  if (
-    idCheck2 === true &&
-    nameCheck2 === true &&
-    yearCheck2 === true &&
-    ageCheck2 === true
-  ) {
-    const idInput = document.querySelector("#idInput").value;
-    const nameInput = document.querySelector("#nameInput").value;
-    const ageInput = document.querySelector("#ageInput").value;
-    const yearInput = document.querySelector("#yearInput").value;
-    const randomImage = getRandomImage();
-
-    // 인풋값 가져오기
-    let userInfo1 = {
-      id: idInput,
-      name: nameInput,
-      age: ageInput,
-      year: yearInput,
-      image: randomImage,
-    };
-
-    data.push(userInfo1);
-    localStorage.setItem("userInfo", JSON.stringify(data));
-
-    // 로컬 스토리지 내용 테이블에 넣기
-    const dataAll = data.map((x, i) => {
-      return `
-             <tr id="tr${x.id}">
-             <td class="img${x.id} tdsize1">
-                  <div class="imgWrap${x.id}">
-                   <img src="${x.image}" alt="randomimg" /></div>
-                  <span></span>
-                  </td>
-                <td class="names${x.id} tdsize1">
-                  <div>${x.name}</div>
-                  <span></span>
-                  </td>
-                <td class="age${x.id} tdsize2">
-                  <div>${x.age}</div>
-                  <span></span>
-                  </td>
-                <td class="years${x.id} tdsize3">
-                  <div>${x.year}</div>
-                  <span></span>
-                </td>
-                <td class="buttons">
-                  <button class="fixbtn${x.id}" onclick="updateData(${x.id})" data-label="수정">
-                    수정
-                  </button>
-                  <button class="deletebtn${x.id}" onclick="deleteData(${x.id})">
-                    삭제
-                  </button>
-                </td>
-              </tr>
-                `;
-    });
-
-    const tablebody = document.querySelector(".tablebody");
-    tablebody.innerHTML = dataAll.join("");
-    document.querySelector("#idInput").value = "";
-    document.querySelector("#nameInput").value = "";
-    document.querySelector("#ageInput").value = "";
-    document.querySelector("#yearInput").value = "";
-    document.querySelector(".idbox").innerText = "";
-    document.querySelector(".namebox").innerText = "";
-    document.querySelector(".namebox").innerText = "";
-    document.querySelector(".yearbox").innerText = "";
-    // 버튼 비활성화
-    let savebtn = document.querySelector("#savebtn");
-    savebtn.disabled = true;
-  } else {
-    savebtn.disabled = true;
-  }
-}
-// 이름 검사
-const checkName = () => {
-  const nameinputValue = document.querySelector(`.nameinput${id}`).value;
-  const namespanTag = document.querySelector(`.names${id} span`);
-  if (nameinputValue.length < 2) {
-    namespanTag.innerText = "이름을 입력하세요.";
-  } else {
-    namespanTag.innerText = "";
-  }
+// 휴지통 누르면 로컬스토리지에서 삭제
+const cartin = (x) => {
+  const detailWrap = document.querySelector(`.detailWrap${x}`);
+  detailWrap.remove();
+  const deleted_Data = cartData.filter((item) => Number(item.id) !== x);
+  cartData = deleted_Data;
+  localStorage.setItem("userCart", JSON.stringify(cartData));
 };
 
-// 가격 검사
-const checkAge = (id) => {
-  const ageinputValue = document.querySelector(`.ageinput${id}`).value;
-  const agespanTag = document.querySelector(`.age${id} span`);
-  if (ageinputValue.length < 1) {
-    agespanTag.innerText = "가격을 입력하세요.";
-  } else {
-    agespanTag.innerText = "";
-  }
-};
-// 경력 검사
-const checkYear = (id) => {
-  const yearinputValue = document.querySelector(`.yearinput${id}`).value;
-  const spanTag = document.querySelector(`.years${id} span`);
-  if (yearinputValue.length < 15) {
-    spanTag.innerText = "15자리 이상 입력해 주세요.";
-  } else {
-    spanTag.innerText = "";
-  }
-};
-
-// 삭제
-const deleteData = (id) => {
-  const deleteTr = document.querySelector(`#tr${id}`);
-  deleteTr.remove();
-  const delete_data = data.filter((item) => Number(item.id) !== id);
-  data = delete_data;
-  localStorage.setItem("userInfo", JSON.stringify(data));
-};
-
-// 수정
-const updateData = (id) => {
-  const updataBtn = document.querySelector(`.fixbtn${id}`);
-  const nameDiv = document.querySelector(`.names${id} div`);
-  const ageDiv = document.querySelector(`.age${id} div`);
-  const yearDiv = document.querySelector(`.years${id} div`);
-  const yearinputValue = document.querySelector(`.yearinput${id}`);
-  const nameinputValue = document.querySelector(`.nameinput${id}`);
-  const ageinputValue = document.querySelector(`.ageinput${id}`);
-
-  if (updataBtn.innerText === "수정") {
-    updataBtn.innerText = "수정완료";
-    yearDiv.innerHTML = `<input class="yearinput${id}" oninput="checkYear(${id})" value="${yearDiv.innerText}" />`;
-    nameDiv.innerHTML = `<input class="nameinput${id}" oninput="checkName(${id})" value="${nameDiv.innerText}" />`;
-    ageDiv.innerHTML = `<input class="ageinput${id}" oninput="checkAge(${id})" value="${ageDiv.innerText}" type="number" />`;
-
-    //checkName(${id}) checkAge(${id})
-  } else {
-    yearDiv.innerText = yearinputValue.value;
-    nameDiv.innerText = nameinputValue.value;
-    ageDiv.innerText = ageinputValue.value;
-    const update_data = data.map((item) => {
-      if (Number(item.id) == id) {
-        return {
-          ...item,
-          year: yearinputValue.value,
-          age: ageinputValue.value,
-          name: nameinputValue.value,
-        };
-      } else {
-        return item;
-      }
-    });
-    data = update_data;
-    localStorage.setItem("userInfo", JSON.stringify(data));
-    updataBtn.innerText = "수정";
-  }
+// 전체 장바구니 지우기 누르면 로컬스토리지에서 삭제
+const cartout = () => {
+  // 장바구니 목록 전체 삭제
+  const cart_wrap = document.querySelector(".cart_wrap");
+  cart_wrap.innerHTML = `<div class="emptyWrap"><img src="./image/emptyalert.png" class="empty"/></div>`;
+  document.querySelector(".cartbtn_wrap").style.display = "none";
+  // 로컬스토리지 초기화
+  localStorage.removeItem("userCart");
 };
