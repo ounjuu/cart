@@ -4,7 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+img {
+  border: none;
+}
 /* Body styles */
 body {
   padding-top: 80px;
@@ -194,10 +196,6 @@ body {
     /* position: fixed;
     bottom: 0; */
   }
-  .footer_wrap {
-    position: fixed;
-    bottom: 0;
-  }
   .footertop {
     display: flex;
     flex-wrap: wrap; /* 줄바꿈 가능 */
@@ -209,7 +207,7 @@ body {
 
   .footertop_left,
   .footertop_right {
-    width: auto; /* 너비 조정 */
+    /* width: auto; 너비 조정 */
     text-align: center; /* 텍스트 가운데 정렬 */
   }
 
@@ -245,6 +243,7 @@ body {
     width: 140px; /* 로고 크기 더 축소 */
     text-align: center;
     height: 100%;
+    border: 0px;
   }
 
   .logoSize {
@@ -293,8 +292,6 @@ body {
   }
 
   .my_footer {
-    position: fixed;
-    bottom: 0;
     height: 300px;
   }
 }
@@ -307,8 +304,6 @@ body {
 }
 
 /* 메인 css */
-
-/* 장바구니 텅 css */
 
 /* 비어있습니다. 이미지 사이즈 */
 .empty {
@@ -344,15 +339,21 @@ body {
 
 /* 메인 css 시작 */
 .detailWrap {
-  padding: 20px;
+  text-align: center;
 }
 
 .detailboxWrap {
+  width: 95%;
+  border-radius: 20px;
+  padding: 20px;
   display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .imgWrap {
   width: 15%;
+  text-align: center;
 }
 
 .imgWrap img {
@@ -360,4 +361,64 @@ body {
   aspect-ratio: 4/5;
   object-fit: cover;
   border-radius: 20px;
+}
+
+.cart_Box {
+  min-height: 500px;
+  max-width: 1280px;
+}
+
+/* 휴지통 버튼 css */
+.fa-solid {
+  font-size: 40px;
+  color: rgb(152, 191, 206);
+}
+
+button {
+  border: none;
+}
+
+.cartout {
+  width: 50%;
+  padding: 20px;
+  border-radius: 20px;
+  background: #333;
+  color: white;
+  cursor: pointer;
+}
+
+.cartin {
+  cursor: pointer;
+}
+
+.cartbtn_wrap {
+  text-align: center;
+}
+
+/* 메인 상품 박스들 */
+.cart_divs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 요소들 간의 간격 유지 */
+  padding: 20px;
+}
+
+.imgWrap,
+.productName,
+.productPrice,
+.productdetail,
+.buttonWrap {
+  width: 20%;
+}
+
+.productName,
+.productPrice,
+.productdetail {
+  flex-grow: 1;
+  text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+.buttonWrap {
+  width: 10%;
+  text-align: right; /* 버튼을 오른쪽 끝으로 */
 }

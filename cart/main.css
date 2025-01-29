@@ -4,7 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+img {
+  border: none;
+}
 /* Body styles */
 body {
   padding-top: 80px;
@@ -149,6 +151,7 @@ body {
 .logoname {
   width: 250px;
   height: 100%;
+  border: 0px;
 }
 
 /* 반응형 헤더와 푸터 */
@@ -194,10 +197,7 @@ body {
     /* position: fixed;
     bottom: 0; */
   }
-  .footer_wrap {
-    position: fixed;
-    bottom: 0;
-  }
+
   .footertop {
     display: flex;
     flex-wrap: wrap; /* 줄바꿈 가능 */
@@ -209,7 +209,7 @@ body {
 
   .footertop_left,
   .footertop_right {
-    width: auto; /* 너비 조정 */
+    /* width: auto; 너비 조정 */
     text-align: center; /* 텍스트 가운데 정렬 */
   }
 
@@ -293,8 +293,6 @@ body {
   }
 
   .my_footer {
-    position: fixed;
-    bottom: 0;
     height: 300px;
   }
 }
@@ -423,9 +421,6 @@ body {
 
   .productsBox {
     height: 800px;
-  }
-  .my_footer {
-    height: 250px;
   }
 }
 
