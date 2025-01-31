@@ -23,15 +23,19 @@
         <div class="divsWrap_hd">
           <div class="logoWrap_hd">
             <!-- <p>ALLROCK</p> -->
-            <a href="#"><img src="./image/logoo.png" class="logoname" /></a>
+            <a href="#"><img src="./image/toplogo.png" class="logoname" /></a>
           </div>
           <div class="headrightWarp">
             <div class="cartWrap_hd">
               <a href="#"
-                ><img src="./image/malllogo.png" class="logoSize"
-              /></a>
+                ><img src="./image/malllogo.png" class="logoSize" /><span
+                  id="cartCount"
+                  class="cart-badge"
+                  >0</span
+                ></a
+              >
             </div>
-            <div class="loginWrap_hd">
+            <div class="loginWrap_hd" onclick="login()">
               <a href="#"
                 ><img src="./image/accountimg.png" class="logoSize"
               /></a>
@@ -84,14 +88,17 @@
                   class="bottomlogo_style"
                 />
               </a>
-              <a href="https://www.instagram.com/daramju__/" target="_blank">
+              <a
+                href="https://section.blog.naver.com/BlogHome.naver"
+                target="_blank"
+              >
                 <img
                   src="image/blog_logo.png"
                   alt="bloglogo"
                   class="bottomlogo_style"
                 />
               </a>
-              <a href="https://www.instagram.com/daramju__/" target="_blank">
+              <a href="https://www.youtube.com/" target="_blank">
                 <img
                   src="image/youtube_logo.png"
                   alt="youtubelogo"
@@ -111,7 +118,8 @@
         </div>
       </div>
     </div>
-
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="./detail.js"></script>
   </body>
 </html>

@@ -18,6 +18,7 @@ tableWrap.innerHTML = `
                   `;
 
 let data = [];
+let cartData = [];
 // 이미지 랜덤
 const randomImg = [
   "0.webp",
@@ -48,6 +49,11 @@ window.onload = function () {
   } else if (!getDate) {
   }
 
+  const getDate2 = JSON.parse(localStorage.getItem("userCart"));
+  if (getDate2) {
+    cartData.push(...getDate2);
+  } else if (!getDate2) {
+  }
   // 데이터 원래꺼 없으면 로컬 스토리지 내용 테이블에 넣기
   const dataAll = data.map((x, i) => {
     return `
@@ -90,6 +96,7 @@ window.onload = function () {
 
   let savebtn = document.querySelector("#savebtn");
   savebtn.disabled = true;
+  updateCartCount();
 };
 
 // 실시간 체크 선언
@@ -349,4 +356,18 @@ const updateData = (id) => {
     localStorage.setItem("userInfo", JSON.stringify(data));
     updataBtn.innerText = "수정";
   }
+};
+
+// 준비중입니다.
+const login = () => {
+  Swal.fire({
+    title: "준비 중입니다.",
+    icon: "warning",
+  });
+};
+
+// 장바구니 개수 업데이트 함수
+const updateCartCount = () => {
+  const cartCount = document.getElementById("cartCount");
+  cartCount.textContent = cartData.length;
 };

@@ -29,6 +29,13 @@ window.onload = function () {
     </div>`; //데이터 없는 경우 텅 띄우기
     cartbtn_wrap.style.display = "none";
   }
+  updateCartCount();
+};
+
+// 장바구니 개수 업데이트 함수
+const updateCartCount = () => {
+  const cartCount = document.getElementById("cartCount");
+  cartCount.textContent = cartData.length;
 };
 
 // 휴지통 누르면 로컬스토리지에서 삭제
@@ -41,14 +48,36 @@ const cartin = (x) => {
     document.querySelector(".cartbtn_wrap").style.display = "none";
   }
   localStorage.setItem("userCart", JSON.stringify(cartData));
+  updateCartCount();
 };
 
-// 전체 장바구니 지우기 누르면 로컬스토리지에서 삭제
+// 전체 장바구니 지우기 누르면 로컬스토리지에서 삭제 // sweetalert
 const cartout = () => {
-  // 장바구니 목록 전체 삭제
-  //const cart_wrap = document.querySelector(".cart_wrap");
-  cart_wrap.innerHTML = `<div class="emptyWrap"><img src="./image/emptyalert.png" class="empty"/></div>`;
-  document.querySelector(".cartbtn_wrap").style.display = "none";
-  // 로컬스토리지 초기화
-  localStorage.removeItem("userCart");
+  Swal.fire({
+    title: "장바구니를 비우시겠습니까?",
+    text: "비우시려면 삭제 버튼을 눌러주세요.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "삭제",
+    cancelButtonText: "취소",
+  }).then((result) => {
+    if (result.value) {
+      cartData = [];
+      cart_wrap.innerHTML = `<div class="emptyWrap"><img src="./image/emptyalert.png" class="empty"/></div>`;
+      document.querySelector(".cartbtn_wrap").style.display = "none";
+
+      // 로컬스토리지 초기화
+      localStorage.removeItem("userCart");
+      updateCartCount();
+    }
+  });
+};
+
+const login = () => {
+  Swal.fire({
+    title: "준비 중입니다.",
+    icon: "warning",
+  });
 };

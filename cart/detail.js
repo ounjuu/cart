@@ -1,5 +1,6 @@
 let data = [];
 let cartData = [];
+
 window.onload = function () {
   const getDate = JSON.parse(localStorage.getItem("userInfo"));
   if (getDate) {
@@ -32,19 +33,33 @@ window.onload = function () {
   }
   const product_wrap = document.querySelector(".product_wrap"); //html에 넣을 곳
   product_wrap.innerHTML = makeBox();
+  updateCartCount();
+};
+
+// 장바구니 개수 업데이트 함수
+const updateCartCount = () => {
+  const cartCount = document.getElementById("cartCount");
+  cartCount.textContent = cartData.length;
 };
 
 const cartin = (x) => {
   const cartProduct = data.find((item) => Number(item.id) == x);
 
-  cartData.push(cartProduct);
+  // 이미 장바구니에 있는지 확인
+  const exists = cartData.some((item) => Number(item.id) === x);
 
-  localStorage.setItem("userCart", JSON.stringify(cartData));
-  window.location.href = "cart.html";
+  if (exists) {
+    Swal.fire({
+      title: "이미 담겨있는 상품입니다.",
+      icon: "warning",
+    });
+  } else {
+    cartData.push(cartProduct);
+    localStorage.setItem("userCart", JSON.stringify(cartData));
+    updateCartCount();
+    window.location.href = "cart.html";
+  }
 };
-
-console.log(cartData);
-
 /////시험중
 // const params = new URLSearchParams(window.location.search);
 
@@ -96,3 +111,11 @@ console.log(cartData);
 //   product_wrap.innerHTML = makeBox.join("");
 //   console.log(makeBox);
 // };
+
+// 준비중입니다.
+const login = () => {
+  Swal.fire({
+    title: "준비 중입니다.",
+    icon: "warning",
+  });
+};
