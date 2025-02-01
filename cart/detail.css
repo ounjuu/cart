@@ -7,6 +7,11 @@
 img {
   border: none;
 }
+
+a {
+  text-decoration: none;
+  outline: none;
+}
 /* Body styles */
 body {
   padding-top: 80px;
@@ -118,7 +123,7 @@ body {
   align-items: center;
   justify-content: center;
   position: fixed;
-  z-index: 20;
+  z-index: 500;
   top: 0;
   left: 0;
   right: 0;
@@ -322,7 +327,7 @@ body {
 .detailboxWrap {
   width: 100%;
   max-width: 800px;
-
+  position: relative;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* 어두운 그림자 */
   border-radius: 12px; /* 둥근 모서리 */
   padding: 20px;
@@ -343,25 +348,34 @@ body {
 
 /* 상품명 스타일 */
 .productName {
-  font-size: 16px; /* 큰 글씨 */
+  font-size: 22px;
   font-weight: bold;
+  font-family: "Do Hyeon", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* 상품 가격 스타일 */
-.productPrice {
-  font-size: 16px;
+.productPrice,
+.cartin {
+  font-size: 22px;
+  font-family: "Do Hyeon", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* 상품 상세내용 스타일 */
 .productdetail {
-  font-size: 16px;
+  font-size: 22px;
+  font-family: "Do Hyeon", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* 버튼 스타일 */
 .buttonWrap button {
   width: 100%;
   padding: 15px 20px;
-  font-size: 1.1rem;
   background-color: #ffffff; /* 흰색 버튼 */
   border: none;
   border-radius: 8px;
@@ -381,19 +395,18 @@ body {
   }
 
   .productName {
-    font-size: 11px;
+    font-size: 15px;
   }
 
   .productPrice {
-    font-size: 11px;
+    font-size: 15px;
   }
 
   .productdetail {
-    font-size: 11px;
+    font-size: 15px;
   }
 
   .buttonWrap button {
-    font-size: 1rem;
     padding: 12px 15px;
   }
 }
@@ -458,5 +471,37 @@ body {
     font-size: 10px;
     width: 10px;
     height: 10px;
+  }
+}
+
+/* 좋아요 버튼 */
+.fa-heart,
+.dataheart {
+  z-index: 300;
+}
+.liked {
+  color: red;
+  z-index: 300;
+}
+
+.likeWrap {
+  position: absolute;
+  right: 50px;
+  bottom: 100px;
+}
+
+i {
+  font-size: 30px;
+}
+
+@media (max-width: 480px) {
+  i {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  i {
+    font-size: 20px;
   }
 }

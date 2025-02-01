@@ -9,11 +9,12 @@ window.onload = function () {
     cartbtn_wrap.style.display = "block";
 
     const makeBox = cartData.map((x) => {
+      const formattedPrice = Number(x.age).toLocaleString() + "원";
       return `<div class="cart_divs detailWrap${x.id}">
               <div class="detailboxWrap">
                 <div class="imgWrap"><img src="${x.image}" alt="productimage" /></div>
                 <div class="productName">상품명: ${x.name}</div>
-                <div class="productPrice">가격: ${x.age}</div>
+                <div class="productPrice">가격: ${formattedPrice}</div>
                 <div class="productdetail">상세: ${x.year}</div>
                 <div class="buttonWrap"><button class="cartin" onclick="cartin(${x.id})"><i class="fa-solid fa-trash-can"></i></button></div>
               </div>

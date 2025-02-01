@@ -1,6 +1,6 @@
 let data = [];
 let cartData = [];
-let likeData = [];
+
 window.onload = function () {
   const getDate = JSON.parse(localStorage.getItem("userInfo"));
   if (getDate) {
@@ -19,78 +19,22 @@ window.onload = function () {
 
   // 상품 데이터 가져오기
   const product = data.find((item) => item.id == productId);
-  // 해당 상품이 좋아요 데이터에 있는지 확인
-  const isLiked = likeData.some((item) => item.id === String(product.id));
-  // 하트 아이콘 클래스 조건부 추가
-  const heartClass = isLiked ? "fa-solid fa-heart liked" : "fa-solid fa-heart";
+
   function makeBox() {
     const formattedPrice = Number(product.age).toLocaleString() + "원";
-
-    // 해당 상품이 좋아요 데이터에 있는지 확인
-    const isLiked = likeData.some((item) => item.id === String(product.id));
-
-    // 하트 아이콘 클래스 조건부 추가
-    const heartClass = isLiked
-      ? "fa-solid fa-heart liked"
-      : "fa-solid fa-heart";
-
     return `<div class="detailWrap">
             <div class="detailboxWrap">
               <div class="imgWrap"><img src="${product.image}" alt="productimage" /></div>
               <div class="productName">상품명: ${product.name}</div>
               <div class="productPrice">가격: ${formattedPrice}</div>
               <div class="productdetail">상세내용: ${product.year}</div>
-                            <div class="likeWrap">
-                <i class="${heartClass}" onclick="heartClick(${product.id})" id="like${product.id}"></i>
-              </div>
-              <div class="buttonWrap">
-                <button class="cartin" onclick="cartin(${product.id})">장바구니 담기</button>
-              </div>
-
+              <div class="buttonWrap"><button class="cartin" onclick="cartin(${product.id})">장바구니 담기</button></div>
             </div>
           </div>`;
   }
   const product_wrap = document.querySelector(".product_wrap"); //html에 넣을 곳
   product_wrap.innerHTML = makeBox();
   updateCartCount();
-  updateHeartColor(); // 페이지 로드시 하트 색상 업데이트
-};
-
-// 좋아요 상태 저장 함수
-const heartClick = (idx) => {
-  let likeData = JSON.parse(localStorage.getItem("userLike")) || [];
-  let likeInfo = { id: String(idx) };
-
-  const isAlreadyLiked = likeData.some((like) => like.id === likeInfo.id);
-
-  if (isAlreadyLiked) {
-    likeData = likeData.filter((like) => like.id !== likeInfo.id);
-  } else {
-    likeData.push(likeInfo);
-  }
-
-  // 로컬스토리지에 저장
-  localStorage.setItem("userLike", JSON.stringify(likeData));
-
-  // 하트 색상 업데이트
-  updateHeartColor();
-};
-
-// 하트 색상 업데이트 함수
-const updateHeartColor = () => {
-  const getDate3 = JSON.parse(localStorage.getItem("userLike")) || [];
-  const hearts = document.querySelectorAll(".likeWrap i");
-
-  hearts.forEach((heart) => {
-    const heartId = heart.id.replace("like", "");
-    const isLiked = getDate3.some((like) => like.id === heartId);
-
-    if (isLiked) {
-      heart.classList.add("liked");
-    } else {
-      heart.classList.remove("liked");
-    }
-  });
 };
 
 // 장바구니 개수 업데이트 함수

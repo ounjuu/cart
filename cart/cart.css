@@ -7,6 +7,11 @@
 img {
   border: none;
 }
+
+a {
+  text-decoration: none;
+  outline: none;
+}
 /* Body styles */
 body {
   padding-top: 80px;
@@ -119,7 +124,7 @@ body {
   align-items: center;
   justify-content: center;
   position: fixed;
-  z-index: 20;
+  z-index: 500;
   top: 0;
   left: 0;
   right: 0;
@@ -475,5 +480,29 @@ button {
     font-size: 10px;
     width: 10px;
     height: 10px;
+  }
+}
+
+.cartout {
+  font-family: "Do Hyeon", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+}
+
+.cart_wrap {
+  font-family: "Do Hyeon", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .cartout {
+    font-size: 18px;
+  }
+
+  .cart_wrap {
+    font-size: 15px;
   }
 }
