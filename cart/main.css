@@ -16,12 +16,21 @@ a {
 body {
   padding-top: 80px;
   background-color: #f4f4f4; /* 밝은 회색 배경 */
+  overflow-x: hidden;
 }
 
 /* 메인 이미지 사이즈 */
+/* 캐러셀 */
+.slideimg_container {
+  width: 200vw;
+  display: flex;
+  transition: all 1s;
+  position: relative;
+}
+
 .mainimage {
   position: relative;
-  width: 100%; /* 부모 div의 너비 */
+  width: 100vw;
   height: calc(
     100vh - 80px
   ); /* 부모 div의 높이를 설정 (예: 헤더를 제외한 화면 크기) */
@@ -30,9 +39,30 @@ body {
 
 .bigimage {
   object-fit: cover;
-  width: 100%;
+  width: 100vw;
   height: 100%;
 }
+.button-left {
+  left: 20px;
+  bottom: 0px;
+  font-size: 30px;
+  background-color: transparent;
+  color: rgb(161, 161, 161);
+}
+
+.button-right {
+  left: 60px;
+  bottom: 0px;
+  font-size: 30px;
+  background-color: transparent;
+  color: rgb(161, 161, 161);
+}
+.slideBtn {
+  border: none;
+  z-index: 3;
+  position: absolute;
+}
+
 /* 푸터 css */
 
 .my_footer {

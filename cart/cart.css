@@ -379,8 +379,10 @@ body {
 
 /* 휴지통 버튼 css */
 .fa-solid {
-  font-size: 40px;
-  color: rgb(152, 191, 206);
+  font-size: 35px;
+  /* color: rgb(152, 191, 206); */
+  color: #333;
+  background-color: transparent;
 }
 
 button {

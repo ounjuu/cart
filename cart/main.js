@@ -129,3 +129,14 @@ const heartClick = (idx, event) => {
   // 하트 색상 업데이트 함수 호출
   updateHeartColor();
 };
+
+// 캐러셀
+const right_btn = () => {
+  document.querySelector(".slideimg_container").style.transform =
+    "translateX(-100vw)";
+};
+
+const left_btn = () => {
+  document.querySelector(".slideimg_container").style.transform =
+    "translateX(0vw)";
+};
