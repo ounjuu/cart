@@ -25,7 +25,6 @@ window.onload = function () {
     //장바구니 비우기 전체 버튼
     cartbtn_wrap.innerHTML = `<button class="cartout" onclick="cartout()">장바구니 비우기</button>`;
   } else {
-    console.log("dddd");
     cart_wrap.innerHTML = `<div class="emptyWrap"><img src="./image/emptyalert.png" class="empty"/>
     </div>`; //데이터 없는 경우 텅 띄우기
     cartbtn_wrap.style.display = "none";

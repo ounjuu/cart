@@ -19,10 +19,13 @@ window.onload = function () {
 
   // 상품 데이터 가져오기
   const product = data.find((item) => item.id == productId);
+
   // 해당 상품이 좋아요 데이터에 있는지 확인
   const isLiked = likeData.some((item) => item.id === String(product.id));
   // 하트 아이콘 클래스 조건부 추가
   const heartClass = isLiked ? "fa-solid fa-heart liked" : "fa-solid fa-heart";
+
+  // 박스 만들기
   function makeBox() {
     const formattedPrice = Number(product.age).toLocaleString() + "원";
 
