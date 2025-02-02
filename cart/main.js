@@ -140,3 +140,37 @@ const left_btn = () => {
   document.querySelector(".slideimg_container").style.transform =
     "translateX(0vw)";
 };
+
+// // 터치 캐러셀
+// let start = 0;
+// let click1 = false;
+// document
+//   .querySelectorAll(".mainimage")[0]
+//   .addEventListener("mousedown", function (e) {
+//     start = e.clientX;
+//     click1 = true;
+//   });
+
+// document
+//   .querySelectorAll(".mainimage")[0]
+//   .addEventListener("mousemove", function (e) {
+//     if (click1 === true) {
+//       document.querySelector(
+//         ".slideimg_container"
+//       ).style.transform = `translateX(${e.clientX - start}px)`;
+//     }
+//   });
+
+// document
+//   .querySelectorAll(".mainimage")[0]
+//   .addEventListener("mouseup", function (e) {
+//     click1 = false;
+//     console.log(e.clientX - start);
+//     if (e.clientX - start < -100) {
+//       document.querySelector(".slideimg_container").style.transform =
+//         "translateX(-100vw)";
+//     } else {
+//       document.querySelector(".slideimg_container").style.transform =
+//         "translateX(0vw)";
+//     }
+//   });

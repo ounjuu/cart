@@ -24,8 +24,8 @@ body {
 .slideimg_container {
   width: 200vw;
   display: flex;
-  transition: all 1s;
   position: relative;
+  transition: all 1s;
 }
 
 .mainimage {
