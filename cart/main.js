@@ -23,7 +23,7 @@ const updateHeartColor = () => {
     }
   });
 };
-
+let move = "ALL";
 // onload
 window.onpageshow = function (event) {
   if (event.persisted == true) {
@@ -51,7 +51,7 @@ window.onpageshow = function (event) {
     likeData.push(...getDate3);
   } else if (!getDate3) {
   }
-
+  // ALL 데이터
   const makeBox = data.map((x, i) => {
     const formattedPrice = Number(x.age).toLocaleString() + "원";
 
@@ -81,7 +81,63 @@ window.onpageshow = function (event) {
   });
 
   const products_wrap = document.querySelector(".products_wrap"); //html에 넣을 곳
+
+  //if 문으로 다시 짜
   products_wrap.innerHTML = makeBox.join("");
+
+  updateHeartColor();
+  updateCartCount();
+};
+
+const getDate4 = JSON.parse(localStorage.getItem("userLike"));
+if (getDate4) {
+  likeData.push(...getDate4);
+} else if (!getDate4) {
+}
+// 타입이 ALL 인 것들 or 다른 것들
+const moveHeader = (type) => {
+  const type1 = data.filter((item) => String(item.type) === type);
+  const type2 = data.filter((item) => String(item.type) !== type);
+  if (type === "ALL") {
+    move = type2;
+    // console.log(type2, "???");
+  } else {
+    move = type1;
+    // console.log(type1, "!!!");
+  }
+  // 추가
+  const makeBox2 = move.map((x, i) => {
+    const formattedPrice = Number(x.age).toLocaleString() + "원";
+
+    // 해당 id가 userLike 배열에 존재하는지 확인
+    const isLiked =
+      getDate4 && getDate4.some((like) => like.id === String(x.id));
+
+    // 하트 아이콘 클래스 조건부 추가
+    const heartClass = isLiked
+      ? "fa-solid fa-heart like-" + x.id + " liked"
+      : "fa-solid fa-heart like-" + x.id;
+
+    return `<div class="divfive" onclick='divClick(${x.id})'>
+      <div class="divinWrap">
+        <div class="dataimage dataimage${x.id}"><img src="${x.image}" alt="productimg"></div>
+        <div class="textbox">
+          <div class="intextbox">
+            <div class="dataname dataname${x.id}">${x.name}</div>
+            <div class="dataprice dataprice${x.id}">${formattedPrice}</div>
+          </div>
+          <div class="dataheart dataheart${x.id}" onclick="heartClick(${x.id}, event)">
+            <i class="${heartClass}" id="like${x.id}"></i>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  });
+
+  const products_wrap2 = document.querySelector(".products_wrap"); //html에 넣을 곳
+
+  //if 문으로 다시 짜
+  products_wrap2.innerHTML = makeBox2.join("");
 
   updateHeartColor();
   updateCartCount();
@@ -100,10 +156,6 @@ const updateCartCount = () => {
   const cartCount = document.getElementById("cartCount");
   cartCount.textContent = cartData.length;
 };
-
-// {
-//   /* <i class="hidden fa-solid fa-heart" style="color: #eb0000;"></i>; */
-// }
 
 // id값 가져오기
 // 좋아요 데이터 처리

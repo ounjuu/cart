@@ -20,48 +20,6 @@ body {
 }
 
 /* 메인 이미지 사이즈 */
-/* 캐러셀 */
-.slideimg_container {
-  width: 200vw;
-  display: flex;
-  position: relative;
-  transition: all 1s;
-}
-
-.mainimage {
-  position: relative;
-  width: 100vw;
-  height: calc(
-    100vh - 80px
-  ); /* 부모 div의 높이를 설정 (예: 헤더를 제외한 화면 크기) */
-  overflow: hidden; /* 넘치는 부분을 숨김 */
-}
-
-.bigimage {
-  object-fit: cover;
-  width: 100vw;
-  height: 100%;
-}
-.button-left {
-  left: 20px;
-  bottom: 0px;
-  font-size: 30px;
-  background-color: transparent;
-  color: rgb(161, 161, 161);
-}
-
-.button-right {
-  left: 60px;
-  bottom: 0px;
-  font-size: 30px;
-  background-color: transparent;
-  color: rgb(161, 161, 161);
-}
-.slideBtn {
-  border: none;
-  z-index: 3;
-  position: absolute;
-}
 
 /* 푸터 css */
 
@@ -563,4 +521,81 @@ body {
 .liked {
   color: red;
   z-index: 300;
+}
+
+/* 게시판 종류 메뉴 */
+.product_menus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  padding: 10px;
+  font-weight: 400;
+}
+
+.menuLeft {
+  margin-left: 10px;
+}
+/* hover시 밑줄 */
+/* 기본 상태 */
+.hoverLine {
+  position: relative; /* 기준점 설정 */
+  display: inline-block; /* 내용 크기만큼 차지 */
+  padding-bottom: 5px; /* 밑줄과 내용 사이 간격 */
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* hover 시 밑줄 효과 */
+.hoverLine::after {
+  content: "";
+  position: absolute;
+  left: 50%; /* 가운데 시작 */
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  background-color: rgb(125, 125, 125); /* 밑줄 색상 */
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+/* hover 시 밑줄이 나타나는 효과 */
+.hoverLine:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* swiper */
+/* 버튼 스타일 수정 */
+.swiper-button-next,
+.swiper-button-prev {
+  position: absolute;
+}
+
+.swiper-button-next {
+  padding-right: 50px; /* 오른쪽 버튼 위치 */
+  color: white;
+}
+
+.swiper-button-prev {
+  padding-left: 50px; /* 왼쪽 버튼 위치 */
+  color: white;
+}
+.swiper-container {
+  width: 100%;
+}
+.swiper-slide {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+.slide_Img {
+  object-fit: cover;
+  width: 100vw;
+  height: 100%;
+}
+
+.swiper-pagination-bullet-active {
+  background: black;
 }

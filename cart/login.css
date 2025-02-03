@@ -528,3 +528,35 @@ td {
     height: 10px;
   }
 }
+
+/* 셀렉트 박스 */
+/* Select Box 스타일 */
+select {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  appearance: none; /* 기본 화살표 제거 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="gray"><path d="M7 10l5 5 5-5z"></path></svg>'); /* 커스텀 화살표 */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  cursor: pointer;
+  margin-bottom: 24px;
+}
+
+/* Select Box 포커스 스타일 */
+select:focus {
+  border-color: #333;
+  outline: none;
+}
+
+/* Select 박스가 비활성화될 때 */
+select:disabled {
+  background-color: #f0f0f0;
+  color: #aaa;
+  cursor: not-allowed;
+}

@@ -104,6 +104,7 @@ let idCheck2 = false;
 let nameCheck2 = false;
 let ageCheck2 = false;
 let yearCheck2 = false;
+let selectCheck2 = false;
 
 // 실시간 아이디 중복 불가능
 function idonInput() {
@@ -216,6 +217,7 @@ function save() {
     const nameInput = document.querySelector("#nameInput").value;
     const ageInput = document.querySelector("#ageInput").value;
     const yearInput = document.querySelector("#yearInput").value;
+    const selectInput = document.querySelector("#typeSelect").value;
     const randomImage = getRandomImage();
 
     // 인풋값 가져오기
@@ -225,6 +227,7 @@ function save() {
       age: ageInput,
       year: yearInput,
       image: randomImage,
+      type: selectInput,
     };
 
     data.push(userInfo1);
