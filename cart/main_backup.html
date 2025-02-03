@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=Noto+Sans+KR:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./cart.css" />
+    <link rel="stylesheet" href="./main.css" />
     <script
       src="https://kit.fontawesome.com/ed5ea03c90.js"
       crossorigin="anonymous"
@@ -47,40 +46,25 @@
         </div>
       </div>
     </div>
-
-    <!-- 상품들 -->
-    <div class="cart_Box">
-      <div class="cart_top">
-        <p style="padding-bottom: 10px; font-size: 18px">
-          &nbsp;&nbsp;&nbsp;<b>장바구니</b>
-        </p>
-        <div class="cart_menu" style="font-weight: bold">
-          <!-- <div class="cart_divs detailWrap"> -->
-
-          <div style="width: 10%; text-align: center" class="th_name">
-            이미지
-          </div>
-          <div style="text-align: center" class="productName th_name">
-            상품명
-          </div>
-          <div style="text-align: center" class="productPrice th_name">
-            가격
-          </div>
-          <div style="text-align: center" class="buttonWrap th_name">
-            비우기
-          </div>
-
-          <!-- </div> -->
-
-          <!-- <div>이미지</div>
-        <div>상품명</div>
-        <div>가격</div>
-        <div>비우기</div> -->
+    <!-- 이미지 캐러셀-->
+    <div class="slide-container">
+      <div class="slideimg_container">
+        <div class="mainimage">
+          <img src="./image/slide3.png" class="bigimage" />
+        </div>
+        <div class="mainimage">
+          <img src="./image/slide2.png" class="bigimage" />
         </div>
       </div>
-      <div class="cart_wrap cart_wrap2"></div>
-      <div class="cartbtn_wrap"></div>
+      <button class="button-left slideBtn" onclick="left_btn()">
+        <i class="fa-solid fa-chevron-left"></i></button
+      ><button class="button-right slideBtn" onclick="right_btn()">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
     </div>
+
+    <!-- 상품들 -->
+    <div class="productsBox"><div class="products_wrap"></div></div>
     <!-- 푸터 -->
     <div class="footer_wrap">
       <div class="footerpadding"></div>
@@ -152,6 +136,6 @@
     </div>
     <!-- sweetalert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="./cart.js"></script>
+    <script src="./main.js"></script>
   </body>
 </html>

@@ -25,10 +25,7 @@ const updateHeartColor = () => {
 };
 
 // onload
-window.onpageshow = function (event) {
-  if (event.persisted == true) {
-    location.reload(); // js - 새로고침
-  }
+window.onload = function () {
   // 전체 데이터
   const getDate = JSON.parse(localStorage.getItem("userInfo"));
   if (getDate) {
@@ -48,7 +45,7 @@ window.onpageshow = function (event) {
   // 좋아요 데이터
   const getDate3 = JSON.parse(localStorage.getItem("userLike"));
   if (getDate3) {
-    likeData.push(...getDate3);
+    cartData.push(...getDate3);
   } else if (!getDate3) {
   }
 

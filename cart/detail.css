@@ -15,7 +15,7 @@ a {
 /* Body styles */
 body {
   padding-top: 80px;
-  background-color: #f4f4f4; /* 밝은 회색 배경 */
+  /* background-color: #f4f4f4; 밝은 회색 배경 */
 }
 
 /* 푸터 css */
@@ -319,21 +319,18 @@ body {
   align-items: center;
   width: 100%;
   min-height: calc(100vh - 80px); /* 헤더 높이를 제외한 전체 화면 */
-
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 /* 상세 박스 스타일 */
 .detailboxWrap {
-  width: 100%;
-  max-width: 800px;
+  width: 70%;
+  max-width: 1000px;
   position: relative;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* 어두운 그림자 */
-  border-radius: 12px; /* 둥근 모서리 */
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 어두운 그림자 */
   padding: 20px;
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  gap: 40px;
   animation: fadeIn 0.3s ease-in-out; /* 부드러운 등장 애니메이션 */
 }
 
@@ -341,46 +338,102 @@ body {
 .imgWrap img {
   width: 100%;
   height: auto; /* 비율 유지 */
-  max-height: 400px; /* 최대 높이 제한 */
+  max-height: 500px; /* 최대 높이 제한 */
   object-fit: contain; /* 이미지 비율 유지하며 박스에 맞춤 */
-  border-radius: 12px; /* 이미지 둥글게 */
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 45%;
+  padding-top: 12%;
+}
+
+.imgWrap {
+  width: 55%;
+  height: 55%;
+}
+.buttonWrap {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  padding-top: 20px;
+  /* justify-content: space-between; */
+  /* bottom: 130px; */
 }
 
 /* 상품명 스타일 */
 .productName {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
-  font-family: "Do Hyeon", serif;
-  font-weight: 400;
-  font-style: normal;
+  padding-bottom: 5px;
+  display: flex;
+  align-items: center;
 }
-
+.NEW {
+  background-color: #585858;
+  color: white;
+  width: auto;
+  height: auto;
+  font-size: 12px;
+  text-align: center;
+  margin-left: 8px;
+  padding: 2px 4px;
+}
+.MD {
+  background-color: white;
+  color: #585858;
+  width: auto;
+  height: auto;
+  font-size: 12px;
+  text-align: center;
+  margin-left: 8px;
+  border: #8e8e8e solid 1px;
+  padding: 2px 4px;
+}
+.productPrice {
+  padding-bottom: 20px;
+}
 /* 상품 가격 스타일 */
 .productPrice,
 .cartin {
-  font-size: 22px;
-  font-family: "Do Hyeon", serif;
-  font-weight: 400;
-  font-style: normal;
+  font-size: 15px;
+  font-weight: bold;
 }
 
+/* 배송비 글자 */
+.delivergray {
+  color: gray;
+  font-size: 12px;
+}
 /* 상품 상세내용 스타일 */
 .productdetail {
-  font-size: 22px;
-  font-family: "Do Hyeon", serif;
-  font-weight: 400;
-  font-style: normal;
+  color: rgb(82, 82, 82);
+  font-size: 12px;
+  padding-bottom: 20px;
+}
+
+.deliver {
+  font-size: 13px;
+  padding-bottom: 5px;
+}
+/* 상단 줄 */
+.contentboxLine {
+  width: 100%;
+  height: 10%;
+  border-top: #d6d6d6 solid 1px;
+  padding-top: 10px;
 }
 
 /* 버튼 스타일 */
 .buttonWrap button {
-  width: 100%;
-  padding: 15px 20px;
+  width: 60%;
   background-color: #ffffff; /* 흰색 버튼 */
   border: none;
-  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
+  border: #d6d6d6 solid 1px;
 }
 
 .buttonWrap button:hover {
@@ -399,15 +452,7 @@ body {
   }
 
   .productPrice {
-    font-size: 15px;
-  }
-
-  .productdetail {
-    font-size: 15px;
-  }
-
-  .buttonWrap button {
-    padding: 12px 15px;
+    font-size: 13px;
   }
 }
 
@@ -478,20 +523,17 @@ body {
 .fa-heart,
 .dataheart {
   z-index: 300;
+  padding: 10px;
+  padding-left: 50px;
+  padding-top: 10px;
 }
 .liked {
   color: red;
   z-index: 300;
 }
 
-.likeWrap {
-  position: absolute;
-  right: 50px;
-  bottom: 100px;
-}
-
 i {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 @media (max-width: 480px) {
@@ -502,6 +544,67 @@ i {
 
 @media (max-width: 768px) {
   i {
-    font-size: 20px;
+    font-size: 18px;
+  }
+}
+
+/* detail 반응형 추가 */
+@media (max-width: 768px) {
+  .deliver {
+    font-size: 11px;
+  }
+  .delivergray {
+    font-size: 11px;
+  }
+  .cartin {
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .detailboxWrap {
+    width: 100%;
+  }
+  .productPrice {
+    padding-bottom: 10px;
+  }
+  .productdetail {
+    padding-bottom: 10px;
+  }
+  .buttonWrap {
+    padding-top: 10px;
+  }
+  .column {
+    padding-top: 20%;
+  }
+}
+
+@media (max-width: 480px) {
+  .deliver {
+    font-size: 10px;
+  }
+  .delivergray {
+    font-size: 10px;
+  }
+  .cartin {
+    font-size: 10px;
+    font-weight: bold;
+  }
+  .detailboxWrap {
+    width: 100%;
+  }
+  .detailWrap {
+    padding: 0px;
+  }
+  .productdetail {
+    padding-bottom: 5px;
+  }
+  .buttonWrap {
+    padding-top: 10px;
+  }
+  .productPrice {
+    padding-bottom: 10px;
+  }
+  .column {
+    width: auto;
+    padding-top: 0%;
   }
 }

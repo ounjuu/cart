@@ -125,16 +125,18 @@ function idonInput() {
 
 // 실시간 이름&숫자금지 / 1글자 이상
 function nameonInput() {
-  const regex2 = /^[ㄱ-ㅎ가-힣a-zA-Z]+$/;
+  // const regex2 = /^[ㄱ-ㅎ가-힣a-zA-Z]+$/;
   let namedataup = document.querySelector("#nameInput").value;
   if (namedataup.length < 1) {
     document.querySelector(".namebox").innerText = "상품명을 입력하세요.";
     nameCheck2 = false;
-  } else if (!regex2.test(namedataup)) {
-    document.querySelector(".namebox").innerText =
-      "영문이나 한글을 입력하세요.";
-    nameCheck2 = false;
-  } else {
+  }
+  // } else if (!regex2.test(namedataup)) {
+  //   document.querySelector(".namebox").innerText =
+  //     "영문이나 한글을 입력하세요.";
+  //   nameCheck2 = false;
+  // }
+  else {
     document.querySelector(".namebox").innerText = "";
     nameCheck2 = true;
   }

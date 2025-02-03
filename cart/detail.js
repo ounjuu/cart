@@ -40,16 +40,25 @@ window.onload = function () {
     return `<div class="detailWrap">
             <div class="detailboxWrap">
               <div class="imgWrap"><img src="${product.image}" alt="productimage" /></div>
-              <div class="productName">상품명: ${product.name}</div>
-              <div class="productPrice">가격: ${formattedPrice}</div>
-              <div class="productdetail">상세내용: ${product.year}</div>
-                            <div class="likeWrap">
+              <div class="column">
+              <div class="productName">${product.name} <p class="NEW">NEW</p><p class="MD">MD</p></div>
+              <div class="productPrice">${formattedPrice}</div>
+              <div class="contentboxLine">
+              <div class="productdetail">- ${product.year}</div>
+              <p class="deliver"><b>배송 방법</b> 택배<br/></p>
+              <p class="deliver"><b>배송비</b> 3,500원 (100,000원 이상 무료배송)</p>
+              <p class="delivergray"> 도서산간 배송비 추가</p>
+                            <div class="buttonWrap">
+                <button class="cartin" onclick="cartin(${product.id})">장바구니 담기</button>
+                <div class="likeWrap">
                 <i class="${heartClass}" onclick="heartClick(${product.id})" id="like${product.id}"></i>
               </div>
-              <div class="buttonWrap">
-                <button class="cartin" onclick="cartin(${product.id})">장바구니 담기</button>
+              </div>
               </div>
 
+
+                                          
+            </div>
             </div>
           </div>`;
   }
