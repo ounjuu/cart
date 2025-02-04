@@ -608,3 +608,58 @@ i {
     padding-top: 0%;
   }
 }
+
+/* 하단 추천 이미지 및 텍스트 박스 */
+.recomText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.recomTextUnder {
+  border-top: #d6d6d6 solid 1px;
+  border-bottom: #d6d6d6 solid 1px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.imgGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.recomImg img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+}
+
+.recomImg1:hover {
+  content: url("./img/wave0.webp");
+}
+
+.recomImg2:hover {
+  content: url("./img/wave14.webp");
+}
+
+.recomImg3:hover {
+  content: url("./img/wave5.webp");
+}
+
+.recomImg4:hover {
+  content: url("./img/wave1.webp");
+}
+
+.recomImg5:hover {
+  content: url("./img/wave7.webp");
+}
+
+.recomImg:hover {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+}

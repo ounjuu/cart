@@ -44,10 +44,10 @@ window.onload = function () {
               <div class="productName">${product.name} <p class="NEW">NEW</p><p class="MD">MD</p></div>
               <div class="productPrice">${formattedPrice}</div>
               <div class="contentboxLine">
-              <div class="productdetail">- ${product.year}</div>
+              <div class="productdetail">* ${product.year}</div>
               <p class="deliver"><b>배송 방법</b> 택배<br/></p>
               <p class="deliver"><b>배송비</b> 3,500원 (100,000원 이상 무료배송)</p>
-              <p class="delivergray"> 도서산간 배송비 추가</p>
+              <p class="delivergray"> - 도서산간 배송비 추가<br> - 평균 배송 기간: 2~3일 (영업일 기준) <br>- 재고 상황에 따라 가격 및 할인 혜택이 변동될 수 있습니다.</p>
                             <div class="buttonWrap">
                 <button class="cartin" onclick="cartin(${product.id})">장바구니 담기</button>
                 <div class="likeWrap">
@@ -133,7 +133,7 @@ const cartin = (x) => {
 // 준비중입니다.
 const login = () => {
   Swal.fire({
-    title: "준비 중입니다.",
+    title: '<h2 style="font-size:18px;">로그인 기능은 준비 중입니다.</h2>',
     icon: "warning",
   });
 };

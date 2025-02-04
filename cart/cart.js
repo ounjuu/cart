@@ -2,9 +2,10 @@ let cartData = [];
 const cart_wrap = document.querySelector(".cart_wrap"); //html에 넣을 곳
 window.onload = function () {
   const cartbtn_wrap = document.querySelector(".cartbtn_wrap"); // 버튼
+  const cartPrice = document.querySelector(".cartPrice"); // 금액계산
   const getDate = JSON.parse(localStorage.getItem("userCart"));
 
-  if (getDate) {
+  if (getDate.length) {
     cartData.push(...getDate);
     cartbtn_wrap.style.display = "block";
 
@@ -21,12 +22,27 @@ window.onload = function () {
     });
 
     cart_wrap.innerHTML = makeBox.join("");
+    // 금액 계산
+    let prices = 0;
+    const cartcount = cartData.length;
+
+    cartPrice.innerHTML = `    <div class="countBoxWrap">
+      <div class="countBox"><div>총 주문 상품 ${cartcount}개</div></div>
+      <div class="priceBoxWrap">
+        <div class="priceBox">${prices.toLocaleString()}원 + 3,500원 + ${(
+      prices + 3500
+    ).toLocaleString()}원</div>
+        <div class="priceBoxbottom">상품금액 &nbsp; &nbsp; + &nbsp; &nbsp; 배송비 &nbsp; &nbsp; + &nbsp;&nbsp; &nbsp;총 주문금액</div>
+      </div>
+    </div>`;
     //장바구니 비우기 전체 버튼
-    cartbtn_wrap.innerHTML = `<button class="cartout" onclick="cartout()">장바구니 비우기</button>`;
+    cartbtn_wrap.innerHTML = `<button class="cartout" onclick="cartout()">장바구니 비우기</button><br><button class="buynow" onclick="buynow()">주문하기</button>`;
   } else {
     cart_wrap.innerHTML = `<div class="emptyWrap"><img src="./image/emptyalert.png" class="empty"/>
     </div>`; //데이터 없는 경우 텅 띄우기
-    cartbtn_wrap.style.display = "none";
+    document.querySelector(".cartbtn_wrap").style.display = "none";
+    document.querySelector(".cartPrice").style.display = "none";
+    console.log(cartPrice, "dsds");
   }
   updateCartCount();
 };
@@ -41,10 +57,18 @@ const updateCartCount = () => {
 const cartin = (x) => {
   const detailWrap = document.querySelector(`.detailWrap${x}`);
   detailWrap.remove();
+  document.querySelector(".cartPrice").style.display = "none";
+  //버튼도 안보이게 하기
+  document.querySelector(".cartbtn_wrap").style.display = "none";
   const deleted_Data = cartData.filter((item) => Number(item.id) !== x);
   cartData = deleted_Data;
-  if (!cartData) {
+  //데이터 없는 경우 텅 띄우기
+  cart_wrap.innerHTML = `<div class="emptyWrap"><img src="./image/emptyalert.png" class="empty"/>
+    </div>`;
+
+  if (cartData.length === 0) {
     document.querySelector(".cartbtn_wrap").style.display = "none";
+    document.querySelector(".cartPrice").style.display = "none";
   }
   localStorage.setItem("userCart", JSON.stringify(cartData));
   updateCartCount();
@@ -66,7 +90,7 @@ const cartout = () => {
       cartData = [];
       cart_wrap.innerHTML = `<div class="emptyWrap"><img src="./image/emptyalert.png" class="empty"/></div>`;
       document.querySelector(".cartbtn_wrap").style.display = "none";
-
+      document.querySelector(".cartPrice").style.display = "none";
       // 로컬스토리지 초기화
       localStorage.removeItem("userCart");
       updateCartCount();
@@ -76,7 +100,14 @@ const cartout = () => {
 
 const login = () => {
   Swal.fire({
-    title: "준비 중입니다.",
+    title: '<h2 style="font-size:18px;">로그인 기능은 준비 중입니다.</h2>',
+    icon: "warning",
+  });
+};
+
+const buynow = () => {
+  Swal.fire({
+    title: '<h2 style="font-size:18px;">주문하기 기능은 준비 중입니다.</h2>',
     icon: "warning",
   });
 };
