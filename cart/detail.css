@@ -127,6 +127,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
+  box-shadow: 0px 3px 5px -2px gray;
 }
 
 .headerWrap {
@@ -524,12 +525,13 @@ body {
 .dataheart {
   z-index: 300;
   padding: 10px;
-  padding-left: 50px;
+  margin-left: 50px;
   padding-top: 10px;
 }
 .liked {
   color: red;
   z-index: 300;
+  cursor: pointer;
 }
 
 i {
@@ -636,6 +638,7 @@ i {
   width: 100%;
   aspect-ratio: 4/5;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .recomImg1:hover {
@@ -662,4 +665,5 @@ i {
   width: 100%;
   aspect-ratio: 4/5;
   object-fit: cover;
+  cursor: pointer;
 }

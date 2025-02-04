@@ -366,7 +366,7 @@ const updateData = (id) => {
 // 준비중입니다.
 const login = () => {
   Swal.fire({
-    title: '<h2 style="font-size:18px;">로그인 기능은 준비 중입니다.</h2>',
+    title: '<h2 style="font-size:20px;">로그인 기능은 준비 중입니다.</h2>',
     icon: "warning",
   });
 };

@@ -131,6 +131,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
+  box-shadow: 0px 3px 5px -2px gray;
 }
 
 .headerWrap {
@@ -321,7 +322,6 @@ body {
 /* 메인 css */
 
 .productsBox {
-  min-height: 1280px;
   max-width: 1280px;
 }
 
@@ -379,6 +379,7 @@ body {
     aspect-ratio: 4/5;
     object-fit: cover;
     border-radius: 20px;
+    cursor: pointer;
   }
 }
 .divinWrap {
@@ -517,6 +518,7 @@ body {
 .fa-heart,
 .dataheart {
   z-index: 300;
+  cursor: pointer;
 }
 .liked {
   color: red;
