@@ -23,20 +23,25 @@ window.onload = function () {
     });
 
     cart_wrap.innerHTML = makeBox.join("");
+
     // 금액 계산
     let prices = 0;
+    let deliverpay = 3500;
     const cartcount = cartData.length;
     if (cartcount) {
       const cartNumber = cartData.map((x, i) => {
         return (prices = Number(prices) + Number(x.age));
       });
+      if (prices >= 100000) {
+        deliverpay = 0;
+      }
       cartPrice.innerHTML = `    <div class="countBoxWrap">
       <div class="countBox"><div>총 주문 상품 ${cartcount}개</div></div>
       <div class="priceBoxWrap">
-        <div class="priceBox">${Number(
-          prices
-        ).toLocaleString()}원 + 3,500원 = ${(
-        Number(prices) + 3500
+        <div class="priceBox">${Number(prices).toLocaleString()}원 + ${Number(
+        deliverpay
+      ).toLocaleString()}원 = ${(
+        Number(prices) + Number(deliverpay)
       ).toLocaleString()}원</div>
         <div class="priceBoxbottom">상품금액 &nbsp; &nbsp; + &nbsp; &nbsp; 배송비 &nbsp; &nbsp; = &nbsp;&nbsp; &nbsp;총 주문금액</div>
       </div>
@@ -48,6 +53,7 @@ window.onload = function () {
       document.querySelector(".cartbtn_wrap").style.display = "none";
       document.querySelector(".cartPrice").style.display = "none";
     }
+
     //장바구니 비우기 전체 버튼
     cartbtn_wrap.innerHTML = `<button class="cartout" onclick="cartout()">장바구니 비우기</button><br><button class="buynow" onclick="buynow()">주문하기</button>`;
   } else {

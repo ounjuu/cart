@@ -1,6 +1,7 @@
 let data = [];
 let cartData = [];
 let likeData = [];
+
 window.onload = function () {
   const getDate = JSON.parse(localStorage.getItem("userInfo"));
   if (getDate) {
@@ -13,6 +14,7 @@ window.onload = function () {
     cartData.push(...getDate2);
   } else if (!getDate2) {
   }
+
   // URL 파라미터에서 id 추출
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get("id");
@@ -22,6 +24,7 @@ window.onload = function () {
 
   // 해당 상품이 좋아요 데이터에 있는지 확인
   const isLiked = likeData.some((item) => item.id === String(product.id));
+
   // 하트 아이콘 클래스 조건부 추가
   const heartClass = isLiked ? "fa-solid fa-heart liked" : "fa-solid fa-heart";
 
@@ -62,6 +65,7 @@ window.onload = function () {
             </div>
           </div>`;
   }
+
   const product_wrap = document.querySelector(".product_wrap"); //html에 넣을 곳
   product_wrap.innerHTML = makeBox();
   updateCartCount();
@@ -113,7 +117,6 @@ const updateCartCount = () => {
 
 const cartin = (x) => {
   const cartProduct = data.find((item) => Number(item.id) == x);
-
   // 이미 장바구니에 있는지 확인
   const exists = cartData.some((item) => Number(item.id) === x);
 

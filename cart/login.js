@@ -199,6 +199,7 @@ function getRandomImage() {
   const makeImg = document.createElement("img");
   return (makeImg.src = `img/${choiceImg}`);
 }
+
 // 저장 버튼 누르면 데이터 저장
 function save() {
   // 1번 검사
@@ -304,6 +305,7 @@ const checkAge = (id) => {
     agespanTag.innerText = "";
   }
 };
+
 // 경력 검사
 const checkYear = (id) => {
   const yearinputValue = document.querySelector(`.yearinput${id}`).value;

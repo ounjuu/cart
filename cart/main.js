@@ -24,6 +24,7 @@ const updateHeartColor = () => {
   });
 };
 let move = "ALL";
+
 // onload
 window.onpageshow = function (event) {
   if (event.persisted == true) {
