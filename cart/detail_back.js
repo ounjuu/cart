@@ -109,53 +109,18 @@ const updateHeartColor = () => {
 // 장바구니 개수 업데이트 함수
 const updateCartCount = () => {
   const cartCount = document.getElementById("cartCount");
-  // cartCount.textContent = cartData.length;
-  const totalQuantity = cartData.reduce((sum, item) => sum + item.quantity, 0);
-  cartCount.textContent = totalQuantity;
+  cartCount.textContent = cartData.length;
 };
 
 const cartin = (x) => {
+  const cartProduct = data.find((item) => Number(item.id) == x);
   // 이미 장바구니에 있는지 확인
   const exists = cartData.some((item) => Number(item.id) === x);
-  const notExists = data.find((item) => Number(item.id) == x);
-  const notExistsData = [notExists].map((item) => {
-    return {
-      ...item,
-      quantity: 1,
-    };
-  });
-
-  const ExistsData = cartData.map((item) => {
-    if (Number(item.id) == x) {
-      return {
-        ...item,
-        quantity: item.quantity + 1,
-      };
-    } else return item;
-  });
 
   if (exists) {
     Swal.fire({
-      title:
-        '<h2 style="font-size:22px; font-weight: bold;">이미 담겨있는 상품입니다. 장바구니에 담으시겠습니까?</h2>',
+      title: "이미 담겨있는 상품입니다.",
       icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "예",
-      cancelButtonText: "아니오",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title:
-            '<h2 style="font-size:22px; font-weight: bold;">장바구니에 담겼습니다.</h2>',
-          icon: "success",
-        });
-        cartData = ExistsData;
-        localStorage.setItem("userCart", JSON.stringify(cartData));
-        updateCartCount();
-        // window.location.href = "cart.html";
-      }
     });
   } else {
     Swal.fire({
@@ -174,7 +139,7 @@ const cartin = (x) => {
             '<h2 style="font-size:22px; font-weight: bold;">장바구니에 담겼습니다.</h2>',
           icon: "success",
         });
-        cartData.push(...notExistsData);
+        cartData.push(cartProduct);
         localStorage.setItem("userCart", JSON.stringify(cartData));
         updateCartCount();
         // window.location.href = "cart.html";
