@@ -79,9 +79,9 @@ window.onload = function () {
 
 const updateCartCount = () => {
   const cartCount = document.getElementById("cartCount");
-  // cartCount.textContent = cartData.length;
-  const totalQuantity = cartData.reduce((sum, item) => sum + item.quantity, 0);
-  cartCount.textContent = totalQuantity;
+  cartCount.textContent = cartData.length;
+  // const totalQuantity = cartData.reduce((sum, item) => sum + item.quantity, 0);
+  // cartCount.textContent = totalQuantity;
 };
 
 // 장바구니 상품 수량 업데이트 함수
