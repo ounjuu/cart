@@ -562,3 +562,38 @@ select:disabled {
   color: #aaa;
   cursor: not-allowed;
 }
+
+/* 엑셀 버튼 */
+.excelbtnbox {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.excelbtn {
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  background-color: transparent;
+}
+
+.excelbtn img {
+  width: 20px; /* 이미지 너비 조정 */
+  height: 20px; /* 이미지 높이 조정 */
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+  margin: 15px;
+}
+
+.pagination-container div {
+  padding: 10px;
+}
+
+.pagination-container div span {
+  padding: 10px;
+}

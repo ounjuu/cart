@@ -8,7 +8,7 @@ tableWrap.innerHTML = `
                     
                       <tr>
                       <div class="excelbtnbox">
-                    <button id="exceldown" class="excelbtn" onclick="excel()"><img src = "./image/excel.png"></button>
+                    <button id="exceldown" class="excelbtn" onclick="excel()">엑셀</button>
                     </div>
                       <th>상품이미지</th>
                         <th>상품명</th>
@@ -21,13 +21,6 @@ tableWrap.innerHTML = `
                     </tbody>
                   </table>
                   <div class="textbox1"></div>
-                  <div class="pagination-container">
-                  <div class="prev-button firstBtn">처음</div>
-                  <div class="prev-button">이전</div>
-                    <div class="numberBtnWrap"><span class="numberBtn">1</span></div>
-                  <div class="next-button">이후</div>
-                  <div class="next-button lastBtn">마지막</div>
-                  </div>
                   `;
 
 let data = [];
@@ -395,37 +388,70 @@ const updateCartCount = () => {
 };
 
 // 엑셀 다운로드
+// document.getElementById("excelDownload").addEventListener("click", function () {
+//   let filename = "testFile.csv";
+//   getCSV(filename);
+// });
 
 const excel = () => {
-  let filename = "testFile.xlsx";
-  getExcel(filename);
+  let filename = "table.csv";
+  getCSV(filename);
 };
-
 let allData = [];
-
-function getExcel(filename) {
-  const thRow = document.querySelectorAll("th"); // 테이블 헤더 가져오기
-  const getData = JSON.parse(localStorage.getItem("userInfo")); // 로컬스토리지에서 데이터 가져오기
-
+function getCSV(filename) {
+  var csv = [];
+  var row = [];
+  const thRow = document.querySelectorAll("th");
+  const getData = JSON.parse(localStorage.getItem("userInfo"));
   if (getData) {
-    allData = [...getData]; // 기존 데이터 업데이트
+    allData.push(...getData);
+  } else if (!getData) {
   }
 
-  // 1열(첫 행)에 컬럼명 추가
-  let ws_data = [[thRow[1].innerText, thRow[2].innerText, thRow[3].innerText]];
-
-  // 데이터 추가
-  allData.forEach((data) => {
-    ws_data.push([data.name, data.age, data.year]);
+  // 1열에는 컬럼명 추가
+  row.push(
+    thRow[0].innerText,
+    thRow[1].innerText,
+    thRow[2].innerText,
+    thRow[3].innerText
+  );
+  csv.push(row.join(","));
+  allData.forEach(function (data) {
+    row = [];
+    row.push(data.image, data.name, data.age, data.year);
+    csv.push(row.join(","));
+    console.log(row);
   });
 
-  // Excel 워크북 생성
-  let wb = XLSX.utils.book_new();
-  let ws = XLSX.utils.aoa_to_sheet(ws_data);
+  downloadCSV(csv.join("\n"), filename);
+}
 
-  // 워크북에 시트 추가
-  XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+function downloadCSV(csv, filename) {
+  var csvFile;
+  var downloadLink;
 
-  // Excel 파일 다운로드
-  XLSX.writeFile(wb, filename);
+  // 한글 처리를 위해 BOM(Byte Order Mark) 추가
+  const BOM = "\uFEFF";
+  csv = BOM + csv;
+
+  // CSV 데이터를 Blob 객체로 변환 (텍스트 파일 생성)
+  csvFile = new Blob([csv], { type: "text/csv" });
+
+  // 다운로드를 위한 `<a>` 태그 생성
+  downloadLink = document.createElement("a");
+
+  // 다운로드할 파일 이름 설정
+  downloadLink.download = filename;
+
+  // Blob 데이터를 URL로 변환하여 링크에 설정
+  downloadLink.href = window.URL.createObjectURL(csvFile);
+
+  // `<a>` 태그를 화면에 표시하지 않음
+  downloadLink.style.display = "none";
+
+  // `<a>` 태그를 문서에 추가
+  document.body.appendChild(downloadLink);
+
+  // `<a>` 태그 클릭하여 다운로드 실행
+  downloadLink.click();
 }

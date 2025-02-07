@@ -21,13 +21,6 @@ tableWrap.innerHTML = `
                     </tbody>
                   </table>
                   <div class="textbox1"></div>
-                  <div class="pagination-container">
-                  <div class="prev-button firstBtn">처음</div>
-                  <div class="prev-button">이전</div>
-                    <div class="numberBtnWrap"><span class="numberBtn">1</span></div>
-                  <div class="next-button">이후</div>
-                  <div class="next-button lastBtn">마지막</div>
-                  </div>
                   `;
 
 let data = [];
@@ -426,6 +419,6 @@ function getExcel(filename) {
   // 워크북에 시트 추가
   XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
 
-  // Excel 파일 다운로드
+  // Excel 파일 다운로드(writeFile)
   XLSX.writeFile(wb, filename);
 }
