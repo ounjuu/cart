@@ -23,9 +23,13 @@ const updateHeartColor = () => {
     }
   });
 };
+let move = "ALL";
 
 // onload
-window.onload = function () {
+window.onpageshow = function (event) {
+  if (event.persisted == true) {
+    location.reload(); // js - 새로고침
+  }
   // 전체 데이터
   const getDate = JSON.parse(localStorage.getItem("userInfo"));
   if (getDate) {
@@ -45,10 +49,10 @@ window.onload = function () {
   // 좋아요 데이터
   const getDate3 = JSON.parse(localStorage.getItem("userLike"));
   if (getDate3) {
-    cartData.push(...getDate3);
+    likeData.push(...getDate3);
   } else if (!getDate3) {
   }
-
+  // ALL 데이터
   const makeBox = data.map((x, i) => {
     const formattedPrice = Number(x.age).toLocaleString() + "원";
 
@@ -84,10 +88,64 @@ window.onload = function () {
   updateCartCount();
 };
 
+const getDate4 = JSON.parse(localStorage.getItem("userLike"));
+if (getDate4) {
+  likeData.push(...getDate4);
+} else if (!getDate4) {
+}
+// 타입이 ALL 인 것들 or 다른 것들
+const moveHeader = (type) => {
+  const type1 = data.filter((item) => String(item.type) === type);
+  const type2 = data.filter((item) => String(item.type) !== type);
+  if (type === "ALL") {
+    move = type2;
+    // console.log(type2, "???");
+  } else {
+    move = type1;
+    // console.log(type1, "!!!");
+  }
+  // 추가
+  const makeBox2 = move.map((x, i) => {
+    const formattedPrice = Number(x.age).toLocaleString() + "원";
+
+    // 해당 id가 userLike 배열에 존재하는지 확인
+    const isLiked =
+      getDate4 && getDate4.some((like) => like.id === String(x.id));
+
+    // 하트 아이콘 클래스 조건부 추가
+    const heartClass = isLiked
+      ? "fa-solid fa-heart like-" + x.id + " liked"
+      : "fa-solid fa-heart like-" + x.id;
+
+    return `<div class="divfive" onclick='divClick(${x.id})'>
+      <div class="divinWrap">
+        <div class="dataimage dataimage${x.id}"><img src="${x.image}" alt="productimg"></div>
+        <div class="textbox">
+          <div class="intextbox">
+            <div class="dataname dataname${x.id}">${x.name}</div>
+            <div class="dataprice dataprice${x.id}">${formattedPrice}</div>
+          </div>
+          <div class="dataheart dataheart${x.id}" onclick="heartClick(${x.id}, event)">
+            <i class="${heartClass}" id="like${x.id}"></i>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  });
+
+  const products_wrap2 = document.querySelector(".products_wrap"); //html에 넣을 곳
+
+  //if 문으로 다시 짜
+  products_wrap2.innerHTML = makeBox2.join("");
+
+  updateHeartColor();
+  updateCartCount();
+};
+
 // 준비중입니다.
 const login = () => {
   Swal.fire({
-    title: "준비 중입니다.",
+    title: '<h2 style="font-size:20px;">로그인 기능은 준비 중입니다.</h2>',
     icon: "warning",
   });
 };
@@ -96,11 +154,9 @@ const login = () => {
 const updateCartCount = () => {
   const cartCount = document.getElementById("cartCount");
   cartCount.textContent = cartData.length;
+  // const totalQuantity = cartData.reduce((sum, item) => sum + item.quantity, 0);
+  // cartCount.textContent = totalQuantity;
 };
-
-// {
-//   /* <i class="hidden fa-solid fa-heart" style="color: #eb0000;"></i>; */
-// }
 
 // id값 가져오기
 // 좋아요 데이터 처리
@@ -140,37 +196,3 @@ const left_btn = () => {
   document.querySelector(".slideimg_container").style.transform =
     "translateX(0vw)";
 };
-
-// // 터치 캐러셀
-// let start = 0;
-// let click1 = false;
-// document
-//   .querySelectorAll(".mainimage")[0]
-//   .addEventListener("mousedown", function (e) {
-//     start = e.clientX;
-//     click1 = true;
-//   });
-
-// document
-//   .querySelectorAll(".mainimage")[0]
-//   .addEventListener("mousemove", function (e) {
-//     if (click1 === true) {
-//       document.querySelector(
-//         ".slideimg_container"
-//       ).style.transform = `translateX(${e.clientX - start}px)`;
-//     }
-//   });
-
-// document
-//   .querySelectorAll(".mainimage")[0]
-//   .addEventListener("mouseup", function (e) {
-//     click1 = false;
-//     console.log(e.clientX - start);
-//     if (e.clientX - start < -100) {
-//       document.querySelector(".slideimg_container").style.transform =
-//         "translateX(-100vw)";
-//     } else {
-//       document.querySelector(".slideimg_container").style.transform =
-//         "translateX(0vw)";
-//     }
-//   });

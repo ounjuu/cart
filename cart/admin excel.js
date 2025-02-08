@@ -5,7 +5,6 @@ tableWrap.innerHTML = `
                   <table>
                   
                     <thead>
-                    
                       <tr>
                       <div class="excelbtnbox">
                     <button id="exceldown" class="excelbtn" onclick="excel()"><img src = "./image/excel.png"></button>

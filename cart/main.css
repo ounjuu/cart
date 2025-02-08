@@ -601,3 +601,33 @@ body {
 .swiper-pagination-bullet-active {
   background: black;
 }
+
+/* 페이지네이션 버튼 CSS */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+  margin: 15px;
+}
+
+.pagination-container div {
+  padding: 10px;
+}
+
+.pagination-container div button {
+  padding: 5px;
+  background-color: transparent;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+.underLine {
+  border-bottom: #717171 solid 1px;
+}
+
+.prev-button,
+.next-button {
+  cursor: pointer;
+}

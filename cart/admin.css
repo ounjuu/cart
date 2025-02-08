@@ -583,6 +583,7 @@ select:disabled {
   height: 20px; /* 이미지 높이 조정 */
 }
 
+/* 페이지네이션 버튼 CSS */
 .pagination-container {
   display: flex;
   justify-content: center;
