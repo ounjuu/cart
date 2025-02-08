@@ -2,10 +2,8 @@
 const tableWrap = document.querySelector(".main-wrap");
 tableWrap.innerHTML = `
 
-                  <table>
-                  
+                  <table>        
                     <thead>
-                    
                       <tr>
                       <div class="excelbtnbox">
                     <button id="exceldown" class="excelbtn" onclick="excel()"><img src = "./image/excel.png"></button>
@@ -22,16 +20,67 @@ tableWrap.innerHTML = `
                   </table>
                   <div class="textbox1"></div>
                   <div class="pagination-container">
-                  <div class="prev-button firstBtn">처음</div>
-                  <div class="prev-button">이전</div>
-                    <div class="numberBtnWrap"><span class="numberBtn">1</span></div>
-                  <div class="next-button">이후</div>
-                  <div class="next-button lastBtn">마지막</div>
+                  <div class="prev-button firstBtn" onclick="firstPage()"><<</div>
+                  <div class="prev-button" onclick="prev()"><</div>
+                    <div class="numberBtnWrap"><<button class="numberBtn" id="page_" onclick="numBtn()">1</button></div>
+                  <div class="next-button" onclick="next()">></div>
+                  <div class="next-button lastBtn" onclick="lastPage()">>></div>
                   </div>
                   `;
 
 let data = [];
 let cartData = [];
+let slice = [];
+
+// 데이터 전역변수
+const dataAll1 = () => {
+  const tablebody = document.querySelector(".tablebody");
+
+  slice = data.slice(firstNum - 1, lastNum);
+  tablebody.innerHTML = slice
+    .map((x, i) => {
+      return `
+            <tr id="tr${x.id}">
+            <td class="img${x.id} tdsize1">
+                <div class="imgWrap${x.id}"><img src="${x.image}" alt="randomimg" /></div>
+                <span></span>
+                </td>
+              <td class="names${x.id} tdsize1">
+                <div>${x.name}</div>
+                <span></span>
+                </td>
+              <td class="age${x.id} tdsize2">
+                <div>${x.age}</div>
+                <span></span>
+                </td>
+              <td class="years${x.id} tdsize3">
+                <div>${x.year}</div>
+                <span></span>
+              </td>
+              <td class="buttons">
+                <button class="fixbtn${x.id}" onclick="updateData(${x.id})" data-label="수정">
+                  수정
+                </button>
+                <button class="deletebtn${x.id}" onclick="deleteData(${x.id})">
+                  삭제
+                </button>
+              </td>
+            </tr>
+            `;
+    })
+    .join("");
+
+  document.querySelector(".idbox").innerText = "";
+  document.querySelector(".namebox").innerText = "";
+  document.querySelector(".agebox").innerText = "";
+  document.querySelector(".yearbox").innerText = "";
+
+  let savebtn = document.querySelector("#savebtn");
+  savebtn.disabled = true;
+
+  setPageButtons();
+};
+
 // 이미지 랜덤
 const randomImg = [
   "0.webp",
@@ -67,49 +116,13 @@ window.onload = function () {
     cartData.push(...getDate2);
   } else if (!getDate2) {
   }
+
   // 데이터 원래꺼 없으면 로컬 스토리지 내용 테이블에 넣기
-  const dataAll = data.map((x, i) => {
-    return `
-              <tr id="tr${x.id}">
-              <td class="img${x.id} tdsize1">
-                  <div class="imgWrap${x.id}"><img src="${x.image}" alt="randomimg" /></div>
-                  <span></span>
-                  </td>
-                <td class="names${x.id} tdsize1">
-                  <div>${x.name}</div>
-                  <span></span>
-                  </td>
-                <td class="age${x.id} tdsize2">
-                  <div>${x.age}</div>
-                  <span></span>
-                  </td>
-                <td class="years${x.id} tdsize3">
-                  <div>${x.year}</div>
-                  <span></span>
-                </td>
-                <td class="buttons">
-                  <button class="fixbtn${x.id}" onclick="updateData(${x.id})" data-label="수정">
-                    수정
-                  </button>
-                  <button class="deletebtn${x.id}" onclick="deleteData(${x.id})">
-                    삭제
-                  </button>
-                </td>
-              </tr>
-              `;
-  });
 
-  const tablebody = document.querySelector(".tablebody");
-  tablebody.innerHTML = dataAll.join("");
-
-  document.querySelector(".idbox").innerText = "";
-  document.querySelector(".namebox").innerText = "";
-  document.querySelector(".agebox").innerText = "";
-  document.querySelector(".yearbox").innerText = "";
-
-  let savebtn = document.querySelector("#savebtn");
-  savebtn.disabled = true;
+  dataAll1();
   updateCartCount();
+  currentPage = 1;
+  currentPageCss();
 };
 
 // 실시간 체크 선언
@@ -248,40 +261,10 @@ function save() {
     localStorage.setItem("userInfo", JSON.stringify(data));
 
     // 로컬 스토리지 내용 테이블에 넣기
-    const dataAll = data.map((x, i) => {
-      return `
-             <tr id="tr${x.id}">
-             <td class="img${x.id} tdsize1">
-                  <div class="imgWrap${x.id}">
-                   <img src="${x.image}" alt="randomimg" /></div>
-                  <span></span>
-                  </td>
-                <td class="names${x.id} tdsize1">
-                  <div>${x.name}</div>
-                  <span></span>
-                  </td>
-                <td class="age${x.id} tdsize2">
-                  <div>${x.age}</div>
-                  <span></span>
-                  </td>
-                <td class="years${x.id} tdsize3">
-                  <div>${x.year}</div>
-                  <span></span>
-                </td>
-                <td class="buttons">
-                  <button class="fixbtn${x.id}" onclick="updateData(${x.id})" data-label="수정">
-                    수정
-                  </button>
-                  <button class="deletebtn${x.id}" onclick="deleteData(${x.id})">
-                    삭제
-                  </button>
-                </td>
-              </tr>
-                `;
-    });
+    dataAll1();
 
-    const tablebody = document.querySelector(".tablebody");
-    tablebody.innerHTML = dataAll.join("");
+    // const tablebody = document.querySelector(".tablebody");
+    // tablebody.innerHTML = dataAll.join("");
     document.querySelector("#idInput").value = "";
     document.querySelector("#nameInput").value = "";
     document.querySelector("#ageInput").value = "";

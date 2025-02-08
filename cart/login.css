@@ -594,6 +594,20 @@ select:disabled {
   padding: 10px;
 }
 
-.pagination-container div span {
-  padding: 10px;
+.pagination-container div button {
+  padding: 5px;
+  background-color: transparent;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+.underLine {
+  border-bottom: #717171 solid 1px;
+}
+
+.prev-button,
+.next-button {
+  cursor: pointer;
 }
