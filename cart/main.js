@@ -26,6 +26,7 @@ const updateHeartColor = () => {
 };
 
 let move = "ALL";
+let movetype = "ALL";
 
 const dataAll3 = () => {
   const products_wrap = document.querySelector(".products_wrap"); //html에 넣을 곳
@@ -138,16 +139,21 @@ const moveDataAll = () => {
 const moveHeader = (type) => {
   //클릭하면 첫페이지 보여주고 싶음
   currentPage = 1;
+
   pageGroup = Math.ceil(currentPage / showButton);
   lastNumber = pageGroup * showButton;
   firstNumber = lastNumber - (showButton - 1);
   lastNum = currentPage * onePage;
   firstNum = lastNum - (onePage - 1);
   const type1 = data.filter((item) => String(item.type) === type);
+
   const type2 = data.filter((item) => String(item.type) !== type);
   if (type === "ALL") {
+    movetype = "ALL";
+
     move = type2.slice(firstNum - 1, lastNum);
   } else {
+    movetype = type1[0].type;
     move = type1.slice(firstNum - 1, lastNum);
   }
   const movetotalPage = () => {
@@ -168,6 +174,7 @@ const moveHeader = (type) => {
   }
   pageGroup = Math.ceil(currentPage / showButton);
   setPageButtons();
+  currentPageCss();
 };
 
 // 준비중입니다.

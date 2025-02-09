@@ -60,14 +60,16 @@ slice = pageDatas.slice(firstNum - 1, lastNum);
 // 맨 처음 페이지 버튼
 const firstPage = () => {
   currentPage = 1;
+  if (lastNumber > moveLast()) {
+    lastNumber = moveLast();
+  }
+  pageGroup = Math.ceil(currentPage / showButton);
+  lastNumber = pageGroup * showButton;
+  firstNumber = lastNumber - (showButton - 1);
   lastNum = currentPage * onePage;
   firstNum = lastNum - (onePage - 1);
 
-  if (
-    move[0].type !== "T-shirt" &&
-    move[0].type !== "PANTS" &&
-    move[0].type !== "ETC"
-  ) {
+  if (movetype === "ALL") {
     type = "ALL";
     dataAll3();
   } else {
@@ -85,14 +87,16 @@ const prev = () => {
   if (currentPage > 1) {
     currentPage = currentPage - 1;
   }
+  if (lastNumber > moveLast()) {
+    lastNumber = moveLast();
+  }
+  pageGroup = Math.ceil(currentPage / showButton);
+  lastNumber = pageGroup * showButton;
+  firstNumber = lastNumber - (showButton - 1);
   lastNum = currentPage * onePage;
   firstNum = lastNum - (onePage - 1);
 
-  if (
-    move[0].type !== "T-shirt" &&
-    move[0].type !== "PANTS" &&
-    move[0].type !== "ETC"
-  ) {
+  if (movetype === "ALL") {
     type = "ALL";
     dataAll3();
   } else {
@@ -104,14 +108,12 @@ const prev = () => {
   setPageButtons();
   currentPageCss();
 };
+
+// 마지막 페이지 계산
 const moveLast = () => {
-  if (
-    move[0].type !== "T-shirt" &&
-    move[0].type !== "PANTS" &&
-    move[0].type !== "ETC"
-  ) {
+  if (movetype === "ALL") {
     type = "ALL";
-    return Math.ceil(typeFour("ALL").length / onePage);
+    return Math.ceil(pageDatas.length / onePage);
   } else {
     return Math.ceil(typeFour(move[0].type).length / onePage);
   }
@@ -119,17 +121,19 @@ const moveLast = () => {
 
 // 다음 버튼
 const next = () => {
-  if (currentPage > moveLast()) {
+  if (currentPage < moveLast()) {
     currentPage = currentPage + 1;
+  }
+  pageGroup = Math.ceil(currentPage / showButton);
+  lastNumber = pageGroup * showButton;
+  firstNumber = lastNumber - (showButton - 1);
+  if (lastNumber > moveLast()) {
+    lastNumber = moveLast();
   }
   lastNum = currentPage * onePage;
   firstNum = lastNum - (onePage - 1);
 
-  if (
-    move[0].type !== "T-shirt" &&
-    move[0].type !== "PANTS" &&
-    move[0].type !== "ETC"
-  ) {
+  if (movetype === "ALL") {
     type = "ALL";
     dataAll3();
   } else {
@@ -144,21 +148,18 @@ const next = () => {
 
 // 마지막 페이지 버튼
 const lastPage = () => {
-  currentPage = totalPage();
+  console.log(moveLast(), "마지막");
+  currentPage = moveLast();
   pageGroup = Math.ceil(currentPage / showButton);
   lastNumber = pageGroup * showButton;
   firstNumber = lastNumber - (showButton - 1);
-  if (lastNumber > totalPage()) {
-    lastNumber = totalPage();
+  if (lastNumber > moveLast()) {
+    lastNumber = moveLast();
   }
   lastNum = currentPage * onePage;
   firstNum = lastNum - (onePage - 1);
-  slice = pageDatas.slice(firstNum - 1, lastNum);
-  if (
-    move[0].type !== "T-shirt" &&
-    move[0].type !== "PANTS" &&
-    move[0].type !== "ETC"
-  ) {
+
+  if (movetype === "ALL") {
     type = "ALL";
     dataAll3();
   } else {
@@ -170,19 +171,17 @@ const lastPage = () => {
   setPageButtons();
   currentPageCss();
 };
-
+console.log(movetype, "나오나?");
 // 숫자 버튼
 const numBtn = (num) => {
   currentPage = num;
   lastNum = currentPage * onePage;
   firstNum = lastNum - (onePage - 1);
-
-  if (
-    move[0].type !== "T-shirt" &&
-    move[0].type !== "PANTS" &&
-    move[0].type !== "ETC"
-  ) {
+  console.log(movetype, "나오나?2222"); //잘 나옴
+  if (movetype === "ALL") {
     type = "ALL";
+    type2 = pageAllData.filter((item) => String(item.type) !== type);
+    move = type2.slice(firstNum - 1, lastNum);
     dataAll3();
   } else {
     type = move[0].type;
