@@ -6,6 +6,13 @@ if (pageDatas) {
   pageAllData.push(...pageDatas);
 }
 
+let typeFour = (ww) => {
+  return pageAllData.filter((x) => {
+    return String(x.type) === ww;
+  });
+};
+console.log(typeFour("PANTS")); //된다!
+
 // 페이지네이션 구현하기
 // 1. 필요한 페이지 수 구하기
 const onePage = 10; // 한 페이지 당 개수 표시
@@ -22,7 +29,9 @@ let lastNum = currentPage * onePage;
 let firstNum = lastNum - (onePage - 1);
 
 // 2. 버튼 동적 생성하기
+
 const numberBtnWrap = document.querySelector(".numberBtnWrap");
+
 if (lastNumber > totalPage()) {
   lastNumber = totalPage();
 }
@@ -51,14 +60,23 @@ slice = pageDatas.slice(firstNum - 1, lastNum);
 // 맨 처음 페이지 버튼
 const firstPage = () => {
   currentPage = 1;
-  pageGroup = Math.ceil(currentPage / showButton);
-  lastNumber = pageGroup * showButton;
-  firstNumber = lastNumber - (showButton - 1);
   lastNum = currentPage * onePage;
   firstNum = lastNum - (onePage - 1);
-  slice = pageDatas.slice(firstNum - 1, lastNum);
+
+  if (
+    move[0].type !== "T-shirt" &&
+    move[0].type !== "PANTS" &&
+    move[0].type !== "ETC"
+  ) {
+    type = "ALL";
+    dataAll3();
+  } else {
+    type = move[0].type;
+    type1 = pageAllData.filter((item) => String(item.type) === type);
+    move = type1.slice(firstNum - 1, lastNum);
+    moveDataAll();
+  }
   setPageButtons();
-  dataAll2();
   currentPageCss();
 };
 
@@ -67,33 +85,60 @@ const prev = () => {
   if (currentPage > 1) {
     currentPage = currentPage - 1;
   }
-  pageGroup = Math.ceil(currentPage / showButton);
-  lastNumber = pageGroup * showButton;
-  firstNumber = lastNumber - (showButton - 1);
   lastNum = currentPage * onePage;
   firstNum = lastNum - (onePage - 1);
-  slice = pageDatas.slice(firstNum - 1, lastNum);
+
+  if (
+    move[0].type !== "T-shirt" &&
+    move[0].type !== "PANTS" &&
+    move[0].type !== "ETC"
+  ) {
+    type = "ALL";
+    dataAll3();
+  } else {
+    type = move[0].type;
+    type1 = pageAllData.filter((item) => String(item.type) === type);
+    move = type1.slice(firstNum - 1, lastNum);
+    moveDataAll();
+  }
   setPageButtons();
-  dataAll2();
   currentPageCss();
+};
+const moveLast = () => {
+  if (
+    move[0].type !== "T-shirt" &&
+    move[0].type !== "PANTS" &&
+    move[0].type !== "ETC"
+  ) {
+    type = "ALL";
+    return Math.ceil(typeFour("ALL").length / onePage);
+  } else {
+    return Math.ceil(typeFour(move[0].type).length / onePage);
+  }
 };
 
 // 다음 버튼
 const next = () => {
-  if (currentPage < totalPage()) {
+  if (currentPage > moveLast()) {
     currentPage = currentPage + 1;
-  }
-  pageGroup = Math.ceil(currentPage / showButton);
-  lastNumber = pageGroup * showButton;
-  firstNumber = lastNumber - (showButton - 1);
-  if (lastNumber > totalPage()) {
-    lastNumber = totalPage();
   }
   lastNum = currentPage * onePage;
   firstNum = lastNum - (onePage - 1);
-  slice = pageDatas.slice(firstNum - 1, lastNum);
+
+  if (
+    move[0].type !== "T-shirt" &&
+    move[0].type !== "PANTS" &&
+    move[0].type !== "ETC"
+  ) {
+    type = "ALL";
+    dataAll3();
+  } else {
+    type = move[0].type;
+    type1 = pageAllData.filter((item) => String(item.type) === type);
+    move = type1.slice(firstNum - 1, lastNum);
+    moveDataAll();
+  }
   setPageButtons();
-  dataAll2();
   currentPageCss();
 };
 
@@ -106,12 +151,23 @@ const lastPage = () => {
   if (lastNumber > totalPage()) {
     lastNumber = totalPage();
   }
-
   lastNum = currentPage * onePage;
   firstNum = lastNum - (onePage - 1);
   slice = pageDatas.slice(firstNum - 1, lastNum);
+  if (
+    move[0].type !== "T-shirt" &&
+    move[0].type !== "PANTS" &&
+    move[0].type !== "ETC"
+  ) {
+    type = "ALL";
+    dataAll3();
+  } else {
+    type = move[0].type;
+    type1 = pageAllData.filter((item) => String(item.type) === type);
+    move = type1.slice(firstNum - 1, lastNum);
+    moveDataAll();
+  }
   setPageButtons();
-  dataAll2();
   currentPageCss();
 };
 
@@ -120,8 +176,20 @@ const numBtn = (num) => {
   currentPage = num;
   lastNum = currentPage * onePage;
   firstNum = lastNum - (onePage - 1);
-  slice = pageDatas.slice(firstNum - 1, lastNum);
+
+  if (
+    move[0].type !== "T-shirt" &&
+    move[0].type !== "PANTS" &&
+    move[0].type !== "ETC"
+  ) {
+    type = "ALL";
+    dataAll3();
+  } else {
+    type = move[0].type;
+    type1 = pageAllData.filter((item) => String(item.type) === type);
+    move = type1.slice(firstNum - 1, lastNum);
+    moveDataAll();
+  }
   setPageButtons();
-  dataAll2();
   currentPageCss();
 };

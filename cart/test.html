@@ -6,12 +6,12 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="countBoxWrap">
-      <div class="countBoxWrap"><div>총 주문 상품 0개</div></div>
-      <div class="priceBoxWrap">
-        <div class="priceBox">46,000원 + 3,500원 + 49,500원</div>
-        <div class="priceBoxbottom">상품금액 배송비 총 주문금액</div>
-      </div>
+    <div class="prev-button firstBtn" onclick="firstPage()"><<</div>
+    <div class="prev-button" onclick="prev()"><</div>
+    <div class="numberBtnWrap">
+      <button class="numberBtn" id="page_" onclick="numBtn()">1</button>
     </div>
+    <div class="next-button" onclick="next()">></div>
+    <div class="next-button lastBtn" onclick="lastPage()">>></div>
   </body>
 </html>

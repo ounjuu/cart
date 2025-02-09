@@ -24,7 +24,6 @@ const updateHeartColor = () => {
     }
   });
 };
-
 let move = "ALL";
 
 const dataAll3 = () => {
@@ -81,6 +80,7 @@ window.onload = function () {
     products_wrap.innerHTML = `<div class="emptyWrap"><img src="./image/emptyalert.png" class="empty"/>
     </div>`; //데이터 없는 경우 텅 띄우기
   }
+
   // 장바구니 데이터
   const getDate2 = JSON.parse(localStorage.getItem("userCart"));
   if (getDate2) {
@@ -89,31 +89,39 @@ window.onload = function () {
   }
 
   // 좋아요 데이터
+
   // ALL 데이터
   dataAll3();
 };
 
-const moveDataAll = () => {
-  const products_wrap2 = document.querySelector(".products_wrap");
-  products_wrap2.innerHTML = "";
-  const getDate4 = JSON.parse(localStorage.getItem("userLike"));
-  if (getDate4) {
-    likeData.push(...getDate4);
+const getDate4 = JSON.parse(localStorage.getItem("userLike"));
+if (getDate4) {
+  likeData.push(...getDate4);
+} else if (!getDate4) {
+}
+// 타입이 ALL 인 것들 or 다른 것들
+const moveHeader = (type) => {
+  const type1 = data.filter((item) => String(item.type) === type);
+  const type2 = data.filter((item) => String(item.type) !== type);
+  if (type === "ALL") {
+    move = type2;
+  } else {
+    move = type1;
   }
+  // 추가
+  const makeBox2 = move.map((x, i) => {
+    const formattedPrice = Number(x.age).toLocaleString() + "원";
 
-  products_wrap2.innerHTML = move
-    .map((x, i) => {
-      const formattedPrice = Number(x.age).toLocaleString() + "원";
+    // 해당 id가 userLike 배열에 존재하는지 확인
+    const isLiked =
+      getDate4 && getDate4.some((like) => like.id === String(x.id));
 
-      // 해당 id가 userLike 배열에 존재하는지 확인
-      const isLiked =
-        getDate4 && getDate4.some((like) => like.id === String(x.id));
-      // 하트 아이콘 클래스 조건부 추가
-      const heartClass = isLiked
-        ? "fa-solid fa-heart like-" + x.id + " liked"
-        : "fa-solid fa-heart like-" + x.id;
+    // 하트 아이콘 클래스 조건부 추가
+    const heartClass = isLiked
+      ? "fa-solid fa-heart like-" + x.id + " liked"
+      : "fa-solid fa-heart like-" + x.id;
 
-      return `<div class="divfive" onclick='divClick(${x.id})'>
+    return `<div class="divfive" onclick='divClick(${x.id})'>
       <div class="divinWrap">
         <div class="dataimage dataimage${x.id}"><img src="${x.image}" alt="productimg"></div>
         <div class="textbox">
@@ -127,47 +135,13 @@ const moveDataAll = () => {
         </div>
       </div>
     </div>`;
-    })
-    .join("");
+  });
+
+  const products_wrap2 = document.querySelector(".products_wrap"); //html에 넣을 곳
+  products_wrap2.innerHTML = makeBox2.join("");
 
   updateHeartColor();
   updateCartCount();
-};
-
-// 타입이 ALL 인 것들 or 다른 것들
-const moveHeader = (type) => {
-  //클릭하면 첫페이지 보여주고 싶음
-  currentPage = 1;
-  pageGroup = Math.ceil(currentPage / showButton);
-  lastNumber = pageGroup * showButton;
-  firstNumber = lastNumber - (showButton - 1);
-  lastNum = currentPage * onePage;
-  firstNum = lastNum - (onePage - 1);
-  const type1 = data.filter((item) => String(item.type) === type);
-  const type2 = data.filter((item) => String(item.type) !== type);
-  if (type === "ALL") {
-    move = type2.slice(firstNum - 1, lastNum);
-  } else {
-    move = type1.slice(firstNum - 1, lastNum);
-  }
-  const movetotalPage = () => {
-    if (type === "ALL") {
-      return Math.ceil(type2.length / onePage);
-    } else {
-      return Math.ceil(type1.length / onePage);
-    }
-  };
-
-  // // 버튼 추가
-  movetotalPage();
-  moveDataAll();
-  if (lastNumber > movetotalPage()) {
-    lastNumber = movetotalPage();
-  } else {
-    lastNumber = pageGroup * showButton;
-  }
-  pageGroup = Math.ceil(currentPage / showButton);
-  setPageButtons();
 };
 
 // 준비중입니다.
