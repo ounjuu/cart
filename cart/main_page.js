@@ -60,12 +60,13 @@ slice = pageDatas.slice(firstNum - 1, lastNum);
 // 맨 처음 페이지 버튼
 const firstPage = () => {
   currentPage = 1;
-  if (lastNumber > moveLast()) {
-    lastNumber = moveLast();
-  }
+
   pageGroup = Math.ceil(currentPage / showButton);
   lastNumber = pageGroup * showButton;
   firstNumber = lastNumber - (showButton - 1);
+  if (lastNumber > moveLast()) {
+    lastNumber = moveLast();
+  }
   lastNum = currentPage * onePage;
   firstNum = lastNum - (onePage - 1);
 
@@ -87,12 +88,13 @@ const prev = () => {
   if (currentPage > 1) {
     currentPage = currentPage - 1;
   }
-  if (lastNumber > moveLast()) {
-    lastNumber = moveLast();
-  }
+
   pageGroup = Math.ceil(currentPage / showButton);
   lastNumber = pageGroup * showButton;
   firstNumber = lastNumber - (showButton - 1);
+  if (lastNumber > moveLast()) {
+    lastNumber = moveLast();
+  }
   lastNum = currentPage * onePage;
   firstNum = lastNum - (onePage - 1);
 

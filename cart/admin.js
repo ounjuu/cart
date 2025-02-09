@@ -279,6 +279,8 @@ function save() {
   } else {
     savebtn.disabled = true;
   }
+
+  location.reload();
 }
 // 이름 검사
 const checkName = () => {
