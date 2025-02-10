@@ -74,6 +74,10 @@
         .then((response) => response.text())
         .then((html) => {
           document.querySelector(".shopHeader").innerHTML = html;
+
+          if (typeof updateCartCount === "function") {
+            updateCartCount();
+          }
         })
         .catch((error) => {
           console.error("푸터 로드 오류:", error);
@@ -98,6 +102,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="../js/detail.js"></script>
+    <script src="../js/detail.js" defer></script>
   </body>
 </html>

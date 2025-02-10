@@ -97,6 +97,10 @@
         .then((response) => response.text())
         .then((html) => {
           document.querySelector(".shopHeader").innerHTML = html;
+
+          if (typeof updateCartCount === "function") {
+            updateCartCount();
+          }
         })
         .catch((error) => {
           console.error("푸터 로드 오류:", error);

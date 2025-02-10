@@ -1,8 +1,8 @@
 /* 이미지 css */
 
 .logoSize {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   margin-left: 8px;
 }
 
@@ -33,7 +33,7 @@
   justify-content: space-between;
   align-items: center;
   padding-left: 20px;
-  padding-right: 20px;
+  padding-right: 45px;
   height: 100%;
 }
 
@@ -45,7 +45,7 @@
 }
 
 .logoname {
-  width: 120px;
+  width: 100px;
   height: 100%;
   border: 0px;
 }
@@ -156,16 +156,19 @@
 .cartWrap_hd {
   position: relative;
 }
+.heartWrap_hd {
+  position: relative;
+}
 .cart-badge {
-  top: 20px;
+  top: 18px;
   right: -5px;
   position: absolute;
   background-color: rgb(43, 43, 43);
   color: white;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -173,14 +176,21 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 768px) {
-  .cart-badge {
-    top: 20px;
-    right: -5px;
-    font-size: 10px;
-    width: 13px;
-    height: 13px;
-  }
+.heart-badge {
+  top: 18px;
+  right: -3px;
+  position: absolute;
+  background-color: rgb(43, 43, 43);
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {
@@ -191,10 +201,24 @@
     width: 13px;
     height: 13px;
   }
+  .heart-badge {
+    top: 15px;
+    right: -5px;
+    font-size: 10px;
+    width: 13px;
+    height: 13px;
+  }
 }
 
 @media (max-width: 480px) {
   .cart-badge {
+    top: 10px;
+    right: -5px;
+    font-size: 10px;
+    width: 10px;
+    height: 10px;
+  }
+  .heart-badge {
     top: 10px;
     right: -5px;
     font-size: 10px;

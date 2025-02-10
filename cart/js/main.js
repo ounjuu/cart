@@ -193,7 +193,6 @@ const updateCartCount = () => {
   // const totalQuantity = cartData.reduce((sum, item) => sum + item.quantity, 0);
   // cartCount.textContent = totalQuantity;
 };
-
 // id값 가져오기
 // 좋아요 데이터 처리
 const heartClick = (idx, event) => {

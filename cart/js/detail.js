@@ -1,7 +1,6 @@
 let data = [];
 let cartData = [];
 let likeData = [];
-
 window.onload = function () {
   const getDate = JSON.parse(localStorage.getItem("userInfo"));
   if (getDate) {
