@@ -42,7 +42,7 @@ window.onload = function () {
 
     return `<div class="detailWrap">
             <div class="detailboxWrap">
-              <div class="imgWrap"><img src="${product.image}" alt="productimage" /></div>
+              <div class="imgWrap"><img src="../${product.image}" alt="productimage" /></div>
               <div class="column">
               <div class="productName">${product.name} <p class="NEW">NEW</p><p class="MD">MD</p></div>
               <div class="productPrice">${formattedPrice}</div>

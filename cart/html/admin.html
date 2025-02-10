@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- 헤더 만들기 -->
+      <div class="shopHeader"></div>
+      <div class="content">
+        <!-- 등록 부분 -->
+        <div class="input-wrap">
+          <!-- 아이디 숫자로만 / 중복 불가 -->
+          <input
+            type="number"
+            placeholder="아이디를 입력해 주세요."
+            id="idInput"
+            oninput="allonchange(1)"
+          /><br />
+          <div class="idbox"></div>
+          <!-- 상품명 -->
+          <input
+            placeholder="상품명을 입력해 주세요."
+            id="nameInput"
+            oninput="allonchange(2)"
+          /><br />
+          <div class="namebox"></div>
+          <!-- 가격 숫자 -->
+          <input
+            type="number"
+            placeholder="가격을 입력해 주세요."
+            id="ageInput"
+            oninput="allonchange(3)"
+          /><br />
+          <div class="agebox"></div>
+          <!-- 상세내용 -->
+          <input
+            placeholder="상세내용을 입력해 주세요."
+            id="yearInput"
+            oninput="allonchange(4)"
+          /><br />
+          <div class="yearbox"></div>
+          <!-- 상품 타입 선택 -->
+          <select id="typeSelect">
+            <!-- <option value="" disabled selected>TYPE</option> -->
+            <option value="T-SHIRT" selected>T-SHIRT</option>
+            <option value="PANTS">PANTS</option>
+            <option value="ETC">ETC</option>
+          </select>
+          <!-- 버튼 -->
+          <button
+            id="savebtn"
+            class="svbtn bottomfont"
+            onclick="save()"
+            disabled="true"
+          >
+            저장
+          </button>
+          <!-- 테이블 여기에 저장~ -->
+          <div class="main-wrap bottomfont"></div>
+        </div>
+      </div>
+      <!-- 푸터 -->
+      <div class="footer_wrap"></div>
+    </div>
+    <!-- 헤더 스크립트 -->
+    <script>
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((html) => {
+          document.querySelector(".shopHeader").innerHTML = html;
+        })
+        .catch((error) => {
+          console.error("푸터 로드 오류:", error);
+        });
+    </script>
+
+    <!-- 푸터 스크립트 -->
+    <script>
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((html) => {
+          document.querySelector(".footer_wrap").innerHTML = html;
+        })
+        .catch((error) => {
+          console.error("푸터 로드 오류:", error);
+        });
+    </script>
+
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/admin_page.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  </body>
+</html>

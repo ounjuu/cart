@@ -54,6 +54,9 @@ const firstPage = () => {
   pageGroup = Math.ceil(currentPage / showButton);
   lastNumber = pageGroup * showButton;
   firstNumber = lastNumber - (showButton - 1);
+  if (lastNumber > totalPage()) {
+    lastNumber = totalPage();
+  }
   lastNum = currentPage * onePage;
   firstNum = lastNum - (onePage - 1);
   slice = pageDatas.slice(firstNum - 1, lastNum);
@@ -70,6 +73,9 @@ const prev = () => {
   pageGroup = Math.ceil(currentPage / showButton);
   lastNumber = pageGroup * showButton;
   firstNumber = lastNumber - (showButton - 1);
+  if (lastNumber > totalPage()) {
+    lastNumber = totalPage();
+  }
   lastNum = currentPage * onePage;
   firstNum = lastNum - (onePage - 1);
   slice = pageDatas.slice(firstNum - 1, lastNum);

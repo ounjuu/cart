@@ -1,0 +1,14 @@
+body {
+  padding-top: 80px;
+  background-color: #f4f4f4;
+  overflow-x: hidden;
+}
+
+.likedText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  padding: 10px;
+  font-weight: bold;
+}

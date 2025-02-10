@@ -15,7 +15,7 @@ window.onload = function () {
       // const isCount = !x.count ? 1 : x.count;
       return `<div class="cart_divs detailWrap${x.id}">
               <div class="detailboxWrap">
-                <div class="imgWrap"><img src="${x.image}" alt="productimage" /></div>
+                <div class="imgWrap"><img src="../${x.image}" alt="productimage" /></div>
                 <div class="productName">${x.name}</div>
                 <div class="productCount"><input type="number" value="${x.quantity}" min="1" class=" quantity-input quantity-input${x.id}" onchange="inputChange(${x.id})"></div>
                 <div class="productPrice">${formattedPrice}</div>
@@ -54,7 +54,7 @@ window.onload = function () {
     </div>`;
     } else {
       //데이터 없는 경우 텅 띄우기
-      cart_wrap.innerHTML = `<div class="emptyWrap"><img src="./image/emptyalert.png" class="empty"/>
+      cart_wrap.innerHTML = `<div class="emptyWrap"><img src="../image/emptyalert.png" class="empty"/>
     </div>`;
       document.querySelector(".cartbtn_wrap").style.display = "none";
       document.querySelector(".cartPrice").style.display = "none";
@@ -63,7 +63,7 @@ window.onload = function () {
     //장바구니 비우기 전체 버튼
     cartbtn_wrap.innerHTML = `<button class="cartout" onclick="cartout()">장바구니 비우기</button><br><button class="buynow" onclick="buynow()">주문하기</button>`;
   } else {
-    cart_wrap.innerHTML = `<div class="emptyWrap"><img src="./image/emptyalert.png" class="empty"/>
+    cart_wrap.innerHTML = `<div class="emptyWrap"><img src="../image/emptyalert.png" class="empty"/>
     </div>`; //데이터 없는 경우 텅 띄우기
     document.querySelector(".cartbtn_wrap").style.display = "none";
     document.querySelector(".cartPrice").style.display = "none";
@@ -128,7 +128,7 @@ const cartout = () => {
   }).then((result) => {
     if (result.value) {
       cartData = [];
-      cart_wrap.innerHTML = `<div class="emptyWrap"><img src="./image/emptyalert.png" class="empty"/></div>`;
+      cart_wrap.innerHTML = `<div class="emptyWrap"><img src="../image/emptyalert.png" class="empty"/></div>`;
       document.querySelector(".cartbtn_wrap").style.display = "none";
       document.querySelector(".cartPrice").style.display = "none";
       // 로컬스토리지 초기화

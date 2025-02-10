@@ -1,0 +1,284 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+}
+/* Body styles */
+body {
+  padding-top: 80px;
+  background-color: #f4f4f4; /* 밝은 회색 배경 */
+  overflow-x: hidden;
+}
+
+/* 메인 이미지 사이즈 */
+
+/* 메인 css */
+
+.productsBox {
+  max-width: 1280px;
+}
+
+/* 비어있습니다. 이미지 사이즈 */
+.empty {
+  width: 300px;
+  height: 300px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.emptyWrap {
+  padding-top: 100px;
+}
+
+@media (max-width: 768px) {
+  .empty {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .emptyWrap {
+    padding-top: 0px;
+  }
+
+  .productsBox {
+    /* min-height: 500px; */
+    height: auto;
+    max-width: 1280px;
+  }
+}
+
+/* 이미지 큰 박스 크기 */
+.productsBox {
+  width: 100%;
+  /* display: grid;
+  grid-template-columns: repeat(5, 1fr); */
+  gap: 10px;
+  place-items: center;
+  overflow: hidden; /* 가로 스크롤 방지 */
+  box-sizing: border-box; /* 패딩 포함 크기 계산 */
+}
+.products_wrap {
+  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.dataimage {
+  img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+}
+.divinWrap {
+  margin: 10px;
+  padding: 10px;
+  height: 100%;
+  position: relative;
+}
+
+.textbox {
+  display: flex;
+  padding: 10px;
+  font-size: 13px;
+}
+
+.dataheart {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .divinWrap {
+    margin: 0px;
+    padding: 5px;
+  }
+  .dataheart {
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+  }
+  .textbox {
+    display: flex;
+    padding: 8px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .divinWrap {
+    margin: 0px;
+    padding: 5px;
+  }
+  .dataheart {
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+  }
+  .textbox {
+    display: flex;
+    padding: 5px;
+    font-size: 8px;
+  }
+
+  /* .productsBox {
+    height: 800px;
+  } */
+}
+
+.dataname {
+  font-weight: bold;
+}
+
+/* 이미지 호버 시 확대 */
+.hidden {
+  display: none !important;
+}
+
+.dataimage img {
+  transition: transform 0.3s ease-in-out; /* 부드러운 애니메이션 */
+}
+
+.dataimage:hover img {
+  transform: scale(1.2); /* 1.2배 확대 */
+}
+
+.dataimage {
+  overflow: hidden; /* 박스 밖으로 넘치는 부분 숨김 */
+  display: flex; /* 이미지 중앙 정렬 */
+  justify-content: center;
+  align-items: center;
+}
+
+/* 좋아요 버튼 */
+.fa-heart,
+.dataheart {
+  z-index: 300;
+  cursor: pointer;
+}
+.liked {
+  color: red;
+  z-index: 300;
+}
+
+/* 게시판 종류 메뉴 */
+.product_menus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  padding: 10px;
+  font-weight: 400;
+}
+
+.menuLeft {
+  margin-left: 10px;
+}
+/* hover시 밑줄 */
+/* 기본 상태 */
+.hoverLine {
+  position: relative; /* 기준점 설정 */
+  display: inline-block; /* 내용 크기만큼 차지 */
+  padding-bottom: 5px; /* 밑줄과 내용 사이 간격 */
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* hover 시 밑줄 효과 */
+.hoverLine::after {
+  content: "";
+  position: absolute;
+  left: 50%; /* 가운데 시작 */
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  background-color: rgb(125, 125, 125); /* 밑줄 색상 */
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+/* hover 시 밑줄이 나타나는 효과 */
+.hoverLine:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* swiper */
+/* 버튼 스타일 수정 */
+.swiper-button-next,
+.swiper-button-prev {
+  position: absolute;
+}
+
+.swiper-button-next {
+  padding-right: 50px; /* 오른쪽 버튼 위치 */
+  color: white;
+}
+
+.swiper-button-prev {
+  padding-left: 50px; /* 왼쪽 버튼 위치 */
+  color: white;
+}
+.swiper-container {
+  width: 100%;
+}
+.swiper-slide {
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+.slide_Img {
+  object-fit: cover;
+  width: 100vw;
+  height: 100%;
+}
+
+.swiper-pagination-bullet-active {
+  background: black;
+}
+
+/* 페이지네이션 버튼 CSS */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+  margin: 15px;
+}
+
+.pagination-container div {
+  padding: 10px;
+}
+
+.pagination-container div button {
+  padding: 5px;
+  background-color: transparent;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+.underLine {
+  border-bottom: #717171 solid 1px;
+}
+
+.prev-button,
+.next-button {
+  cursor: pointer;
+}

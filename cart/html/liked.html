@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>like</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/liked.css" />
+    <script
+      src="https://kit.fontawesome.com/ed5ea03c90.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- 헤더 만들기 -->
+      <div class="shopHeader"></div>
+      <div class="content">
+        <!-- 상품들 -->
+        <div class="likedText"><p>찜한 상품</p></div>
+        <div class="productsBox"><div class="products_wrap"></div></div>
+      </div>
+      <!-- 푸터 -->
+      <div class="footer_wrap"></div>
+    </div>
+
+    <!-- 헤더 스크립트 -->
+    <script>
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((html) => {
+          document.querySelector(".shopHeader").innerHTML = html;
+        })
+        .catch((error) => {
+          console.error("푸터 로드 오류:", error);
+        });
+    </script>
+
+    <!-- 푸터 스크립트 -->
+    <script>
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((html) => {
+          document.querySelector(".footer_wrap").innerHTML = html;
+        })
+        .catch((error) => {
+          console.error("푸터 로드 오류:", error);
+        });
+    </script>
+    <!-- sweetalert -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="../js/liked.js"></script>
+  </body>
+</html>

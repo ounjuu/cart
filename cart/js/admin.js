@@ -6,7 +6,7 @@ tableWrap.innerHTML = `
                     <thead>
                       <tr>
                       <div class="excelbtnbox">
-                    <button id="exceldown" class="excelbtn" onclick="excel()"><img src = "./image/excel.png"></button>
+                    <button id="exceldown" class="excelbtn" onclick="excel()"><img src = "../image/excel.png"></button>
                     </div>
                       <th>상품이미지</th>
                         <th>상품명</th>
@@ -42,7 +42,7 @@ const dataAll1 = () => {
       return `
             <tr id="tr${x.id}">
             <td class="img${x.id} tdsize1">
-                <div class="imgWrap${x.id}"><img src="${x.image}" alt="randomimg" /></div>
+                <div class="imgWrap${x.id}"><img src="../${x.image}" alt="randomimg" /></div>
                 <span></span>
                 </td>
               <td class="names${x.id} tdsize1">
