@@ -12,3 +12,134 @@ body {
   padding: 10px;
   font-weight: bold;
 }
+
+/* 메인 css */
+
+.productsBox {
+  max-width: 1280px;
+}
+
+/* 비어있습니다. 이미지 사이즈 */
+.empty {
+  width: 300px;
+  height: 300px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.emptyWrap {
+  padding-top: 100px;
+}
+
+@media (max-width: 768px) {
+  .empty {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .emptyWrap {
+    padding-top: 0px;
+  }
+
+  .productsBox {
+    /* min-height: 500px; */
+    height: auto;
+    max-width: 1280px;
+  }
+}
+
+/* 이미지 큰 박스 크기 */
+.productsBox {
+  width: 100%;
+  /* display: grid;
+  grid-template-columns: repeat(5, 1fr); */
+  gap: 10px;
+  place-items: center;
+  overflow: hidden; /* 가로 스크롤 방지 */
+  box-sizing: border-box; /* 패딩 포함 크기 계산 */
+}
+.products_wrap {
+  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.dataimage {
+  img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+}
+.divinWrap {
+  margin: 10px;
+  padding: 10px;
+  height: 100%;
+  position: relative;
+}
+
+.textbox {
+  display: flex;
+  padding: 10px;
+  font-size: 13px;
+}
+
+.dataheart {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .divinWrap {
+    margin: 0px;
+    padding: 5px;
+  }
+  .dataheart {
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+  }
+  .textbox {
+    display: flex;
+    padding: 8px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .divinWrap {
+    margin: 0px;
+    padding: 5px;
+  }
+  .dataheart {
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+  }
+  .textbox {
+    display: flex;
+    padding: 5px;
+    font-size: 8px;
+  }
+
+  /* .productsBox {
+    height: 800px;
+  } */
+}
+
+/* 좋아요 버튼 */
+.fa-heart,
+.dataheart {
+  z-index: 300;
+  cursor: pointer;
+}
+.liked {
+  color: red;
+  z-index: 300;
+}
