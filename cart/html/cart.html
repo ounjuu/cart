@@ -62,7 +62,6 @@
         .then((response) => response.text())
         .then((html) => {
           document.querySelector(".shopHeader").innerHTML = html;
-
           if (typeof updateCartCount === "function") {
             updateCartCount();
           }
