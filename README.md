@@ -80,7 +80,7 @@
 
 ### ➕ 장바구니 수량 변경 가능하게 업데이트
 ### ➕ 100,000원 이상인 경우 배송비 0원으로 변경
-
+<div align="center">
 <img width="80%" alt="image" src="https://github.com/user-attachments/assets/185867c2-7520-4dd1-90a2-7c758811a45e" /></div>
 
 ### ➕ 찜버튼 누른 상품들 볼 수 있는 페이지 추가
