@@ -10,6 +10,7 @@ tableWrap.innerHTML = `
                     </div>
                       <th>상품이미지</th>
                         <th>상품명</th>
+                        <th>상품옵션</th>
                         <th>가격</th>
                         <th>상세내용</th>
                         <th>관리</th>
@@ -47,6 +48,10 @@ const dataAll1 = () => {
                 </td>
               <td class="names${x.id} tdsize1">
                 <div>${x.name}</div>
+                <span></span>
+                </td>
+                <td class="type${x.id} tdsize2">
+                <div>${x.type}</div>
                 <span></span>
                 </td>
               <td class="age${x.id} tdsize2">
@@ -328,20 +333,36 @@ const deleteData = (id) => {
 const updateData = (id) => {
   const updataBtn = document.querySelector(`.fixbtn${id}`);
   const nameDiv = document.querySelector(`.names${id} div`);
+  const typeDiv = document.querySelector(`.type${id} div`);
   const ageDiv = document.querySelector(`.age${id} div`);
   const yearDiv = document.querySelector(`.years${id} div`);
   const yearinputValue = document.querySelector(`.yearinput${id}`);
   const nameinputValue = document.querySelector(`.nameinput${id}`);
   const ageinputValue = document.querySelector(`.ageinput${id}`);
+  const typeinputValue = document.querySelector(`#typeSelect${id}`);
 
   if (updataBtn.innerText === "수정") {
+    const currentType = typeDiv.innerText.trim();
+
     updataBtn.innerText = "수정완료";
+    // typeDiv.innerHTML = `<input class="typeSelect${id}" value="${typeDiv.innerText}" />`;
+    typeDiv.innerHTML = `<select id="typeSelect${id}">
+    <option value="T-SHIRT" ${
+      currentType === "T-SHIRT" ? "selected" : ""
+    }>T-SHIRT</option>
+    <option value="PANTS" ${
+      currentType === "PANTS" ? "selected" : ""
+    }>PANTS</option>
+    <option value="ETC" ${currentType === "ETC" ? "selected" : ""}>ETC</option>
+  </select>`;
+
     yearDiv.innerHTML = `<input class="yearinput${id}" oninput="checkYear(${id})" value="${yearDiv.innerText}" />`;
     nameDiv.innerHTML = `<input class="nameinput${id}" oninput="checkName(${id})" value="${nameDiv.innerText}" />`;
     ageDiv.innerHTML = `<input class="ageinput${id}" oninput="checkAge(${id})" value="${ageDiv.innerText}" type="number" />`;
 
     //checkName(${id}) checkAge(${id})
   } else {
+    typeDiv.innerText = typeinputValue.value;
     yearDiv.innerText = yearinputValue.value;
     nameDiv.innerText = nameinputValue.value;
     ageDiv.innerText = ageinputValue.value;
@@ -349,6 +370,7 @@ const updateData = (id) => {
       if (Number(item.id) == id) {
         return {
           ...item,
+          type: typeinputValue.value,
           year: yearinputValue.value,
           age: ageinputValue.value,
           name: nameinputValue.value,
