@@ -72,19 +72,19 @@
 
 ## :star: 추가 구현 완료 리스트
 
-### ➕ 페이지네이션 추가(관리자 페이지, 메인 페이지)
-### ➕ 엑셀 다운로드 가능(관리자 페이지 상품들)
-### ➕ 관리자 페이지 type 옵션 수정 가능하도록 추가
+#### ➕ 페이지네이션 추가(관리자 페이지, 메인 페이지)
+#### ➕ 엑셀 다운로드 가능(관리자 페이지 상품들)
+#### ➕ 관리자 페이지 type 옵션 수정 가능하도록 추가
 <div align="center">
 <img width="80%" alt="image" src="https://github.com/user-attachments/assets/b3c5fb05-b500-4586-bcf7-c1f0f0f7b367" /></div>
 
 
-### ➕ 장바구니 수량 변경 가능하게 업데이트
-### ➕ 100,000원 이상인 경우 배송비 0원으로 변경
+#### ➕ 장바구니 수량 변경 가능하게 업데이트
+#### ➕ 100,000원 이상인 경우 배송비 0원으로 변경
 <div align="center">
 <img width="80%" alt="image" src="https://github.com/user-attachments/assets/185867c2-7520-4dd1-90a2-7c758811a45e" /></div>
 
-### ➕ 찜버튼 누른 상품들 볼 수 있는 페이지 추가
+#### ➕ 찜버튼 누른 상품들 볼 수 있는 페이지 추가
 <div align="center">
 <img width="80%" alt="image" src="https://github.com/user-attachments/assets/105135d2-9ece-491d-83fa-5625ef2d456a" /></div>
 
