@@ -5,7 +5,7 @@
 </div>
 
 ## :page_facing_up: 프로젝트 소개
-1. <b>ALLROCK(ALLCLIMB) 프로젝트</b>의 연장선 (국내 클라이밍장 소식을 모은 사이트)입니다.
+1. <b>ALLROCK(ALLCLIMB) 프로젝트의 연장선 (국내 클라이밍장 소식을 모은 사이트)입니다.</b>
 2. <b>SHOP 기능을 구현하였습니다. (로컬스토리지 사용)</b><br/><br/>
 
 ## :high_brightness: 개발 환경
