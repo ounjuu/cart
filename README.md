@@ -1,8 +1,8 @@
 
 # :handbag: ALLROCK 장바구니 구현 README
+
 <div align="center">
-  <img width="932" alt="image" src="https://github.com/user-attachments/assets/d08189e4-2ce0-46a0-9029-24ba31a3e70e" />
-</div>
+<img width="80%" alt="image" src="https://github.com/user-attachments/assets/e3f70eba-cc9e-4d45-892f-6f00ea84bfaa" /></div>
 
 ## :page_facing_up: 프로젝트 소개
 1. <b>ALLROCK(ALLCLIMB) 프로젝트의 연장선 (국내 클라이밍장 소식을 모은 사이트)입니다.</b>
